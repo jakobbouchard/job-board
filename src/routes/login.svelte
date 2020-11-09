@@ -1,15 +1,20 @@
 <script>
-  import Profile from '../components/Profile.svelte';
-
+  import { goto } from '@sapper/app';
   import { auth, googleProvider } from '../firebase';
   import { authState } from 'rxfire/auth';
 
-  let user;
+  let currentUser;
+  const unsubscribe = authState(auth).subscribe(u => currentUser = u);
 
-  const unsubscribe = authState(auth).subscribe(u => user = u);
-
-  function login() {
-    auth.signInWithPopup(googleProvider);
+  async function login() {
+    try {
+      auth.signInWithPopup(googleProvider).then((res) => {
+        goto('/dashboard');
+      });
+    } catch(e) {
+      let message = e.message || e;
+      console.log("Something went wrong:", message);
+    }
   }
 </script>
 
@@ -18,12 +23,11 @@
 </svelte:head>
 
 <section>
-  {#if user}
-    <Profile {...user} />
-    <button class="btn btn-red" on:click={ () => auth.signOut() }>Logout</button>
+  {#if currentUser}
+    <a class="btn btn-blue" href="dashboard">Go to dashboard</a>
   {:else}
-  <button class="btn btn-blue" on:click={login}>
-    Signin with Google
-  </button>
+    <button class="btn btn-blue" on:click={login}>
+      Signin with Google
+    </button>
   {/if}
 </section>
