@@ -4,7 +4,7 @@ import "firebase/firestore";
  
 const firebaseConfig = {
   apiKey: "AIzaSyDvdLLNv65dI7XQtEtlpO_XTIerVtJIXBw",
-  authDomain: "jobboard.jakobbouchard.dev",
+  authDomain: "job-board-cegep-outaouais.firebaseapp.com",
   databaseURL: "https://job-board-cegep-outaouais.firebaseio.com",
   projectId: "job-board-cegep-outaouais",
   storageBucket: "job-board-cegep-outaouais.appspot.com",
