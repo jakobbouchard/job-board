@@ -1,6 +1,6 @@
 # Job Board for Cégep de l'Outaouais
 
-![GitHub](https://img.shields.io/github/license/Kiwoui-TIM/job-board)
+![GitHub](https://img.shields.io/github/license/jakobbouchard/job-board)
 
 ![Svelte](https://img.shields.io/badge/Framework-Svelte-df420f?logo=svelte)
 ![Firebase](https://img.shields.io/badge/Cloud-Firebase-f5ba23?logo=Firebase)
