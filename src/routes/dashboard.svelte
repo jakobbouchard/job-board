@@ -9,7 +9,8 @@
       return this.redirect(302, '/login');
     }
   }
-
+</script>
+<script>
   let currentUser;
   const unsubscribe = authState(auth).subscribe(u => currentUser = u);
 </script>
