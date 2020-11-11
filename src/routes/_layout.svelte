@@ -3,7 +3,6 @@
   import { onMount } from 'svelte';
   import { stores } from '@sapper/app';
   import { auth } from '../firebase';
-  import { authState } from 'rxfire/auth';
   import Cookies from 'js-cookie';
 
   export let segment;
@@ -48,10 +47,14 @@
   @tailwind utilities;
 </style>
 
-{#if segment !== 'login'}
+{#if segment !== 'signin'}
   <Nav {segment}/>
-{/if}
 
-<main class="relative max-w-4xl mx-auto p-8 bg-white">
-  <slot></slot>
-</main>
+  <main class="relative max-w-4xl mx-auto p-8 bg-white">
+    <slot></slot>
+  </main>
+{:else}
+  <main class="relative">
+    <slot></slot>
+  </main>
+{/if}

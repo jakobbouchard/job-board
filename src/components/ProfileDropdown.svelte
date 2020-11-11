@@ -64,7 +64,7 @@
             hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition
             duration-150 ease-in-out"
           on:click={ () => auth.signOut() }
-        >Logout</a>
+        >Sign out</a>
       </div>
     {/if}
   </div>
