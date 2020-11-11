@@ -5,7 +5,7 @@
   export let location;
 </script>
 
-<li class="mb-4 border border-gray-300 sm:rounded-lg">
+<li class="mb-4 border border-gray-400 sm:rounded">
   <a href="#" class="block hover:shadow focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
     <div class="px-4 py-4 sm:px-6">
       <div class="flex items-center justify-between">

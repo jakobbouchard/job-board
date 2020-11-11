@@ -2,6 +2,22 @@
   import Job from '../../components/jobs/Job.svelte';
 </script>
 
+<style>
+  @layer components {
+    .date {
+      @apply inline-block border border-gray-400 rounded-full py-2 px-4 mb-4;
+    }
+    .date::after{
+        width: 1px;
+        background: 1px;
+        height: 90%;
+        position: absolute;
+        top: 5em;
+        left: 3em;
+    }
+  }
+</style>
+
 <svelte:head>
   <title>Jobs</title>
 </svelte:head>
@@ -12,7 +28,11 @@
     <Job name="Front End Developer" type="Full-time" department="Engineering" location="Remote" />
     <Job name="Designer" type="Full-time" department="Marketing" location="Remote" />
 
+    <li class="date">Jan 1st</li>
 
+    <Job name="Back End Developer" type="Full-time" department="Engineering" location="Remote" />
+    <Job name="Front End Developer" type="Full-time" department="Engineering" location="Remote" />
+    <Job name="Designer" type="Full-time" department="Marketing" location="Remote" />
   </ul>
 
   <div
@@ -58,45 +78,13 @@
                 d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
                 clip-rule="evenodd" />
             </svg>
-          </a>
-          <a
-            href="#"
-            class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-            1
-          </a>
-          <a
-            href="#"
-            class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-            2
-          </a>
-          <a
-            href="#"
-            class="hidden md:inline-flex -ml-px relative items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-            3
-          </a>
-          <span
-            class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700">
-            ...
-          </span>
-          <a
-            href="#"
-            class="hidden md:inline-flex -ml-px relative items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-            8
-          </a>
-          <a
-            href="#"
-            class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-            9
-          </a>
-          <a
-            href="#"
-            class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-            10
+            Prev
           </a>
           <a
             href="#"
             class="-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
             aria-label="Next">
+            Next
             <svg
               class="h-5 w-5"
               x-description="Heroicon name: chevron-right"
