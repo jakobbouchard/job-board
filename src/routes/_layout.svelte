@@ -42,19 +42,10 @@
   });
 </script>
 
-<style>
-  main {
-    position: relative;
-    max-width: 56em;
-    background-color: white;
-    padding: 2em;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-</style>
+{#if segment !== 'login'}
+  <Nav {segment}/>
+{/if}
 
-<Nav {segment}/>
-
-<main>
+<main class="relative max-w-4xl mx-auto p-8 bg-white">
   <slot></slot>
 </main>
