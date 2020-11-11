@@ -1,5 +1,3 @@
-const tailwindcss = require('tailwindcss');
-
 const purgecss = require('@fullhuman/postcss-purgecss')({
   content: [
     './src/**/*.svelte',
@@ -15,7 +13,7 @@ const production = process.env.NODE_ENV !== 'development';
 
 module.exports = {
   plugins: [
-    tailwindcss('./tailwind.js'),
+    require('tailwindcss'),
     ...(production ? [purgecss] : [])
   ]
 };
