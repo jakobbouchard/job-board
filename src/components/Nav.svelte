@@ -26,33 +26,6 @@
   }
 </script>
 
-<style>
-  @layer components {
-    .nav-link {
-      @apply ml-2 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 transition duration-150 ease-in-out font-display;
-    }
-    .nav-link:hover {
-      @apply text-white bg-gray-700;
-    }
-    .nav-link:focus {
-      @apply outline-none text-white bg-gray-700;
-    }
-
-    .nav-link[aria-current] {
-      @apply text-white bg-gray-900;
-    }
-    .nav-link[aria-current]:hover {
-      @apply bg-gray-900;
-    }
-
-    @media (max-width: 640px) {
-      .nav-link {
-        @apply block ml-0 mt-1 text-base leading-none;
-      }
-    }
-  }
-</style>
-
 <nav class="bg-gray-800">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
@@ -88,8 +61,8 @@
         </div>
         {:else}
         <div class="ml-3 relative">
-          <a href="/login" class="btn btn-blue">
-            Login
+          <a href="/signin" class="inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+            Sign in
           </a>
         </div>
         {/if}
