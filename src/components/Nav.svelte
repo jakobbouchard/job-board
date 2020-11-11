@@ -1,5 +1,6 @@
 <script>
   import ProfileDropdown from '../components/ProfileDropdown.svelte';
+  import NavLinks from '../components/NavLinks.svelte';
   import { auth } from '../firebase';
   import { authState } from 'rxfire/auth';
 
@@ -75,9 +76,7 @@
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex">
-            <a href="." class="nav-link" aria-current="{segment === undefined ? 'page' : undefined}">Home</a>
-            <a href="/about" class="nav-link" aria-current="{segment === 'about' ? 'page' : undefined}">About</a>
-            <a href="/dashboard" class="nav-link" aria-current="{segment === 'dashboard' ? 'page' : undefined}">Dashboard</a>
+            <NavLinks {segment}/>
           </div>
         </div>
       </div>
@@ -103,9 +102,7 @@
   -->
   <div id="mobile-nav" class="hidden sm:hidden">
     <div class="px-2 pt-2 pb-3">
-      <a href="." class="nav-link" aria-current="{segment === undefined ? 'page' : undefined}">Home</a>
-      <a href="/about" class="nav-link" aria-current="{segment === 'about' ? 'page' : undefined}">About</a>
-      <a href="/dashboard" class="nav-link" aria-current="{segment === 'dashboard' ? 'page' : undefined}">Dashboard</a>
+      <NavLinks {segment}/>
     </div>
   </div>
 </nav>
