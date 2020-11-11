@@ -23,6 +23,21 @@
   <title>Jobs</title>
 </svelte:head>
 
+<div>
+  <label for="Search" class="block text-xl leading-5 text-gray-700">Search</label>
+
+  <div class="mt-1 relative border border-rounded-md shadow-sm">
+    <input id="Search" class="form-input block w-full p-4 pl-7 pr-12 sm:text-xl sm:leading-5" placeholder="Search...">
+    <div class="absolute inset-y-0 right-0 flex items-center">
+      <select aria-label="Statuts" class="form-select h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm sm:leading-5">
+        <option>Contrat</option>
+        <option>Temps plein</option>
+        <option>Temps partiel</option>
+      </select>
+    </div>
+  </div>
+</div>
+
 <div class="p-4 bg-white overflow-hidden sm:rounded-lg">
   <ul id="timeline" class="relative">
     <Job name="Cashier" type="Part-time" company="McDonald's" location="Gatineau" />
