@@ -5,16 +5,17 @@
 <style>
   @layer components {
     .date {
-      @apply inline-block border border-gray-400 rounded-full py-2 px-4 mb-4;
+      @apply inline-block border border-gray-400 bg-white relative z-10 rounded-full py-2 px-4 mb-4;
     }
-    .date::after{
-        width: 1px;
-        background: 1px;
-        height: 90%;
-        position: absolute;
-        top: 5em;
-        left: 3em;
+    #timeline::after{
+      content: '';
+      width: 1px;
+      height: 90%;
+      top: 3em;
+      left: 2.5em;
+      @apply absolute bg-gray-500;
     }
+
   }
 </style>
 
@@ -23,20 +24,20 @@
 </svelte:head>
 
 <div class="p-4 bg-white overflow-hidden sm:rounded-lg">
-  <ul>
-    <Job name="Back End Developer" type="Full-time" department="Engineering" location="Remote" />
-    <Job name="Front End Developer" type="Full-time" department="Engineering" location="Remote" />
-    <Job name="Designer" type="Full-time" department="Marketing" location="Remote" />
+  <ul id="timeline" class="relative">
+    <Job name="Cashier" type="Part-time" company="McDonald's" location="Gatineau" />
+    <Job name="Geek Squad" type="Part-time" company="Best Buy" location="Ottawa" />
+    <Job name="Front End Developer" type="Full-time" company="Distantia" location="Gatineau" />
 
     <li class="date">Jan 1st</li>
 
-    <Job name="Back End Developer" type="Full-time" department="Engineering" location="Remote" />
-    <Job name="Front End Developer" type="Full-time" department="Engineering" location="Remote" />
-    <Job name="Designer" type="Full-time" department="Marketing" location="Remote" />
+    <Job name="Back End Developer" type="Full-time" company="Spiria" location="Ottawa" />
+    <Job name="Front End Developer" type="Part-time" company="Justice Canada" location="Ottawa" />
+    <Job name="Designer" type="Full-time" company="Trinergie" location="Gatineau" />
   </ul>
 
   <div
-    class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+    class="relative px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
     <div class="flex-1 flex justify-between sm:hidden">
       <a
         href="#"
@@ -62,7 +63,7 @@
         </p>
       </div>
       <div>
-        <nav class="relative z-0 inline-flex shadow-sm">
+        <nav class="inline-flex shadow-sm">
           <a
             href="#"
             class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
@@ -77,7 +78,7 @@
                 d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
                 clip-rule="evenodd" />
             </svg>
-            Prev
+            Previous
           </a>
           <a
             href="#"
