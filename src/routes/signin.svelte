@@ -26,7 +26,7 @@
   }
 </script>
 
-<style>
+<style lang="postcss">
   @layer components {
     input {
       @apply appearance-none relative block w-full px-3 py-2 border border-gray-300 text-gray-900 transition duration-150 ease-in-out;

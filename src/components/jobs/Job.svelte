@@ -8,7 +8,7 @@
   export let location;
 </script>
 
-<style>
+<style lang="postcss">
   @layer components {
     li {
       @apply mb-4 border border-gray-400 bg-white relative z-10;

@@ -2,7 +2,7 @@
   import Job from '../../components/jobs/Job.svelte';
 </script>
 
-<style>
+<style lang="postcss">
   @layer components {
     .date {
       @apply inline-block border border-gray-400 bg-white relative z-10 rounded-full py-2 px-4 mb-4;

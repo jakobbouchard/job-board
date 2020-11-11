@@ -2,7 +2,7 @@
   export let segment;
 </script>
 
-<style>
+<style lang="postcss">
   @layer components {
     .nav-link {
       @apply ml-2 px-3 py-2 rounded-md text-sm font-normal leading-5 text-gray-300 transition duration-150 ease-in-out;

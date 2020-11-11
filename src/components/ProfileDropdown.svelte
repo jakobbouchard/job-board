@@ -37,7 +37,7 @@
   });
 </script>
 
-<style>
+<style lang="postcss">
   @layer components {
     .profile-icon {
       @apply flex text-sm border-2 border-transparent rounded-full transition
