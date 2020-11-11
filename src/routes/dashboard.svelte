@@ -24,4 +24,3 @@
 {/if}
 
 <h1>This is our protected dashboard! Only visible when you are logged in with Firebase</h1>
-<button class="btn btn-red" on:click={ () => auth.signOut() }>Logout</button>
