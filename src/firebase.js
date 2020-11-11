@@ -26,5 +26,6 @@ const app = initFirebase(firebaseConfig);
 // returning firestore handle
 export const auth = app.auth();
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
+export const twitterProvider = new firebase.auth.TwitterAuthProvider();
 
 export const firestore = app.firestore();
