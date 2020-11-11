@@ -28,13 +28,13 @@
 
 <style>
   @layer components {
-    input {
+    input:not([type=checkbox]) {
       @apply appearance-none relative block w-full px-3 py-2 border border-gray-300 text-gray-900 transition duration-150 ease-in-out;
     }
-    input::placeholder {
+    input:not([type=checkbox])::placeholder {
       @apply text-gray-500;
     }
-    input:focus {
+    input:not([type=checkbox]):focus {
       @apply outline-none shadow-outline border-blue-300 z-10;
     }
 
@@ -76,7 +76,7 @@
 </style>
 
 <svelte:head>
-  <title>Sign in</title>
+  <title>Sign up</title>
 </svelte:head>
 
 <div class="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
@@ -84,7 +84,7 @@
     <div>
       <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/v1/workflow-mark-on-white.svg" alt="Workflow">
       <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
-        Sign in to your account
+        Sign up for an account
       </h2>
     </div>
 
@@ -117,23 +117,17 @@
           </div>
         </div>
 
-        <div class="mt-6 flex items-center justify-between">
+        <div class="mt-6 flex items-center justify-end">
           <div class="text-sm leading-5">
-            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-              Forgot your password?
-            </a>
-          </div>
-
-          <div class="text-sm leading-5">
-            <a href="/signup" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-              Create an account
+            <a href="/signin" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
+              I already have an account
             </a>
           </div>
         </div>
 
         <div class="mt-6">
           <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-            Sign in
+            Sign up
           </button>
         </div>
       </form>

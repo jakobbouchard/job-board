@@ -47,7 +47,7 @@
   @tailwind utilities;
 </style>
 
-{#if segment !== 'signin'}
+{#if (segment !== 'signin' && segment !== 'signup')}
   <Nav {segment}/>
 
   <main class="relative max-w-4xl mx-auto p-8 bg-white">
