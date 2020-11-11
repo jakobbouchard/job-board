@@ -7,5 +7,5 @@
 
 <h3>Hi { displayName }!</h3>
 
-<img src={ photoURL } width="100" alt="user avatar">
+<img referrerpolicy="no-referrer" src={ photoURL } width="100" alt={ displayName }>
 <p>Your userID is { uid }</p>
