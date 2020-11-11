@@ -24,7 +24,6 @@
             class="mr-6 flex items-center text-sm leading-5 text-gray-500">
             <svg
               class="flex-shrink-0 mr-1 h-5 w-5 text-gray-400"
-              x-description="Heroicon name: users"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor">
@@ -37,7 +36,6 @@
         <div class="flex items-center text-sm leading-5 text-gray-500">
           <svg
             class="flex-shrink-0 mr-1 h-5 w-5 text-gray-400"
-            x-description="Heroicon name: location-marker"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor">
