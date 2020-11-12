@@ -30,6 +30,6 @@
 </style>
 
 <a href="." class="nav-link" aria-current="{segment === undefined ? 'page' : undefined}">Home</a>
-<a href="/jobs" class="nav-link" aria-current="{segment === 'jobs' ? 'page' : undefined}">Jobs</a>
-<a href="/contracts" class="nav-link" aria-current="{segment === 'contracts' ? 'page' : undefined}">Contracts</a>
+<a href="/jobs" class="nav-link" aria-current="{segment === 'jobs' ? 'page' : undefined}">Emplois</a>
+<a href="/services" class="nav-link" aria-current="{segment === 'services' ? 'page' : undefined}">Services</a>
 <a href="/about" class="nav-link" aria-current="{segment === 'about' ? 'page' : undefined}">About</a>
