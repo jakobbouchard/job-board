@@ -15,7 +15,7 @@
     }
 
     a {
-      @apply block transition duration-150 ease-in-out;
+      @apply block px-4 py-4 transition duration-150 ease-in-out;
     }
     a:hover {
       @apply shadow;
@@ -57,38 +57,35 @@
       li {
         @apply rounded;
       }
+      a {
+        @apply px-6;
+      }
     }
   }
 </style>
 
 <li>
   <a href="#">
-    <div class="px-4 py-4 sm:px-6">
-      <div class="top-info">
-        <div class="job-name">
-          { name }
-        </div>
-        <div class="flex">
-          <span class="job-type {type === "Full-time" ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}">
-            { type }
-          </span>
-        </div>
+    <div class="top-info">
+      <div class="job-name">
+        { name }
       </div>
-      <div class="bottom-info">
-        <div class="sm:flex">
-          <div class="company">
-            <div class="icon">
-              <Icon icon={ faSuitcase } />
-            </div>
-            { company }
-          </div>
+      <span class="job-type {type === "Full-time" ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}">
+        { type }
+      </span>
+    </div>
+    <div class="bottom-info">
+      <div class="company">
+        <div class="icon">
+          <Icon icon={ faSuitcase } />
         </div>
-        <div class="location">
-          <div class="icon">
-            <Icon icon={ faLocationArrow } />
-          </div>
-          { location }
+        { company }
+      </div>
+      <div class="location">
+        <div class="icon">
+          <Icon icon={ faLocationArrow } />
         </div>
+        { location }
       </div>
     </div>
   </a>
