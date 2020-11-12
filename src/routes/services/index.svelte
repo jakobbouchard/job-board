@@ -20,7 +20,7 @@
 </style>
 
 <svelte:head>
-  <title>Contracts</title>
+  <title>Services</title>
 </svelte:head>
 
 <div class="p-4 bg-white overflow-hidden sm:rounded-lg">
