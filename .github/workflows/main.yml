@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Sapper Build
+        uses: truewebartisans/actions-sapper@1.1.0
+        with:
+          build_mode: build
+    
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Vercel Deploy (Preview)
+        uses: amondnet/vercel-action@v19.0.1+4
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-project-name: job-board
