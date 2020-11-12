@@ -26,10 +26,12 @@
 <div>
   <label for="Search" class="block text-xl leading-5 text-gray-700">Search</label>
 
-  <div class="mt-1 relative border border-rounded-md shadow-sm">
+  <div class="mt-1 relative ">
+    <div class="border border-gray-600 border-rounded-md shadow-lg">
     <input id="Search" class="form-input block w-full p-4 pl-7 pr-12 sm:text-xl sm:leading-5" placeholder="Search...">
-    <div class="absolute inset-y-0 right-0 flex items-center">
-      <select aria-label="Statuts" class="form-select h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm sm:leading-5">
+    </div>
+    <div class="absolute inset-y-0 right-0 flex items-center border border-gray-600 border-rounded-md shadow-lg">
+      <select aria-label="Statuts" class="form-select h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-600 sm:text-sm sm:leading-5">
         <option>Contrat</option>
         <option>Temps plein</option>
         <option>Temps partiel</option>
@@ -81,7 +83,7 @@
         <nav class="inline-flex shadow-sm">
           <a
             href="#"
-            class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
+            class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
             aria-label="Previous">
             <svg
               class="h-5 w-5"
@@ -97,7 +99,7 @@
           </a>
           <a
             href="#"
-            class="-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
+            class="-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
             aria-label="Next">
             Next
             <svg
