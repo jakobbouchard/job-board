@@ -3,6 +3,7 @@
 ![GitHub](https://img.shields.io/github/license/jakobbouchard/job-board)
 
 ![Svelte](https://img.shields.io/badge/Framework-Svelte-df420f?logo=svelte)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-CSS-38b2ac?logo=tailwind-css)
 ![Firebase](https://img.shields.io/badge/Cloud-Firebase-f5ba23?logo=Firebase)
 
 This website will enable companies to put up job offers as well as contracts for
