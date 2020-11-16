@@ -1,5 +1,14 @@
 <script>
+  import Search from '../../components/jobs/Search.svelte';
   import Job from '../../components/jobs/Job.svelte';
+  import { firestore } from '../../firebase';
+  import { collectionData } from 'rxfire/firestore';
+  import { startWith } from 'rxjs/operators';
+
+  // Query requires an index, see screenshot below
+  const query = firestore.collection('jobs').orderBy('createdAt');
+
+  const jobs = collectionData(query, 'id').pipe(startWith([]));
 </script>
 
 <style lang="postcss">
@@ -23,17 +32,19 @@
   <title>Services</title>
 </svelte:head>
 
+<Search />
+
 <div class="p-4 bg-white overflow-hidden sm:rounded-lg">
   <ul id="timeline" class="relative">
-    <Job name="Cashier" type="Part-time" company="McDonald's" location="Gatineau" />
-    <Job name="Geek Squad" type="Part-time" company="Best Buy" location="Ottawa" />
-    <Job name="Front End Developer" type="Full-time" company="Distantia" location="Gatineau" />
+    {#each $jobs as job}
+      <Job {...job} />
+    {/each}
 
     <li class="date">1er janvier</li>
 
-    <Job name="Back End Developer" type="Full-time" company="Spiria" location="Ottawa" />
-    <Job name="Front End Developer" type="Part-time" company="Justice Canada" location="Ottawa" />
-    <Job name="Designer" type="Full-time" company="Trinergie" location="Gatineau" />
+    {#each $jobs as job}
+      <Job {...job} />
+    {/each}
   </ul>
 
   <div
@@ -66,7 +77,7 @@
         <nav class="inline-flex shadow-sm">
           <a
             href="#"
-            class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
+            class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
             aria-label="Précédent">
             <svg
               class="h-5 w-5"
@@ -82,7 +93,7 @@
           </a>
           <a
             href="#"
-            class="-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
+            class="-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
             aria-label="Prochain">
             Prochain
             <svg
