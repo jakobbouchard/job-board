@@ -17,6 +17,8 @@
   import { faSuitcase, faLocationArrow, faCalendar, faBuilding, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 
   export let job;
+  const createdDate = new Date(job.data.createdAt.seconds * 1000)
+  const formattedDate = createdDate.toLocaleString('fr-CA', { year: 'numeric', month: 'long', day: 'numeric' })
 </script>
 
 <style lang="postcss">
@@ -61,38 +63,38 @@
 </style>
 
 <svelte:head>
-  <title>{job.data.name}</title>
+  <title>{ job.data.name }</title>
 </svelte:head>
 
 <div class="md:flex md:items-center md:justify-between">
   <div class="flex-1 min-w-0">
     <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
-      {job.data.name}
+      { job.data.name }
     </h2>
     <div class="info-container">
       <div class="info">
         <div class="icon">
           <Icon icon={ faSuitcase } />
         </div>
-        {job.data.type}
+        { job.data.type }
       </div>
       <div class="info">
         <div class="icon">
           <Icon icon={ faBuilding } />
         </div>
-        {job.data.company}
+        { job.data.company }
       </div>
       <div class="info">
         <div class="icon">
           <Icon icon={ faLocationArrow } />
         </div>
-        {job.data.location}
+        { job.data.location }
       </div>
       <div class="info">
         <div class="icon">
           <Icon icon={ faCalendar } />
         </div>
-        1 septembre 2020
+        Publié le { formattedDate }
       </div>
     </div>
   </div>
