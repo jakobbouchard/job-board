@@ -43,7 +43,7 @@
     <li class="date">1er janvier</li>
 
     {#each $jobs as job}
-      <Job id={job.id} {...job.data} />
+      <Job {...job} />
     {/each}
   </ul>
 
