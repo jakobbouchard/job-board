@@ -121,25 +121,25 @@
             <div class="link-icon">
               <Icon icon={ faUser } />
             </div>
-            Profile
+            Profil
           </a>
           <a href="#" class="link">
             <div class="link-icon">
               <Icon icon={ faSuitcase } />
             </div>
-            My jobs
+            Mes emplois
           </a>
           <a href="#" class="link">
             <div class="link-icon">
               <Icon icon={ faCog } />
             </div>
-            Settings
+            Paramètres
           </a>
           <a href="." class="link" on:click={ () => auth.signOut() }>
             <div class="link-icon">
               <Icon icon={ faSignOutAlt } />
             </div>
-            Sign out
+            Déconnexion
           </a>
         </div>
       </div>

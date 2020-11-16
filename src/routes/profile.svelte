@@ -16,11 +16,11 @@
 </script>
 
 <svelte:head>
-  <title>Profile</title>
+  <title>Profil</title>
 </svelte:head>
 
 {#if currentUser}
   <Profile {...currentUser} />
 {/if}
 
-<h1>This is our protected profile! Only visible when you are logged in with Firebase</h1>
+<h1>Ceci est notre profil protégé ! Uniquement visible lorsque vous êtes connecté avec Firebase</h1>

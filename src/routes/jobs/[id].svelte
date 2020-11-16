@@ -92,7 +92,7 @@
         <div class="icon">
           <Icon icon={ faCalendar } />
         </div>
-        Closing on January 9, 2020
+        1 septembre 2020
       </div>
     </div>
   </div>

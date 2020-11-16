@@ -31,7 +31,7 @@
 </style>
 
 <svelte:head>
-  <title>Jobs</title>
+  <title>Emplois</title>
 </svelte:head>
 
 <Search />
@@ -42,7 +42,7 @@
       <Job id={job.id} {...job.data} />
     {/each}
 
-    <li class="date">Jan 1st</li>
+    <li class="date">1er janvier</li>
 
     {#each jobs as job}
       <Job id={job.id} {...job.data} />
@@ -55,24 +55,24 @@
       <a
         href="#"
         class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-        Previous
+        Précédent
       </a>
       <a
         href="#"
         class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-        Next
+        Prochain
       </a>
     </div>
     <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
       <div>
         <p class="text-sm leading-5 text-gray-700">
-          Showing
+          Affiche
           <span class="font-medium">1</span>
-          to
+          à
           <span class="font-medium">10</span>
-          of
+          de
           <span class="font-medium">97</span>
-          results
+          résultats
         </p>
       </div>
       <div>
@@ -80,7 +80,7 @@
           <a
             href="#"
             class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
-            aria-label="Previous">
+            aria-label="Précédent">
             <svg
               class="h-5 w-5"
               xmlns="http://www.w3.org/2000/svg"
@@ -91,13 +91,13 @@
                 d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
                 clip-rule="evenodd" />
             </svg>
-            Previous
+            Précédent
           </a>
           <a
             href="#"
             class="-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
-            aria-label="Next">
-            Next
+            aria-label="Prochain">
+            Prochain
             <svg
               class="h-5 w-5"
               xmlns="http://www.w3.org/2000/svg"

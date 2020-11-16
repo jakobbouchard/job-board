@@ -5,7 +5,7 @@
 </script>
 
 
-<h3>Hi { displayName }!</h3>
+<h3>Bonjour { displayName }!</h3>
 
 <img referrerpolicy="no-referrer" src={ photoURL } width="100" alt={ displayName }>
-<p>Your userID is { uid }</p>
+<p>Votre UID est { uid }</p>

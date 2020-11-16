@@ -28,13 +28,13 @@
 
 <style lang="postcss">
   @layer components {
-    input:not([type=checkbox]) {
+    input {
       @apply appearance-none relative block w-full px-3 py-2 border border-gray-300 text-gray-900 transition duration-150 ease-in-out;
     }
-    input:not([type=checkbox])::placeholder {
+    input::placeholder {
       @apply text-gray-500;
     }
-    input:not([type=checkbox]):focus {
+    input:focus {
       @apply outline-none shadow-outline border-blue-300 z-10;
     }
 
@@ -76,7 +76,7 @@
 </style>
 
 <svelte:head>
-  <title>Sign up</title>
+  <title>Inscription</title>
 </svelte:head>
 
 <div class="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
@@ -84,7 +84,7 @@
     <div>
       <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/v1/workflow-mark-on-white.svg" alt="Workflow">
       <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
-        Sign up for an account
+        Créez-vous un compte
       </h2>
     </div>
 
@@ -94,7 +94,7 @@
           <span class="mr-2 icon-container">
             <Icon class="text-white transition ease-in-out duration-150" icon={faGoogle} />
           </span>
-          Sign in with Google
+          Continuer avec Google
         </button>
 
         <button on:click={() => login('twitter')} type="submit" class="group relative w-1/6 flex justify-center ml-3 md:ml-4 py-2 px-4 border border-transparent border-gray-400 text-sm leading-5 font-medium rounded-md bg-white hover:border-gray-600 focus:outline-none focus:border-gray-800 focus:shadow-outline-gray active:bg-gray-800 transition duration-150 ease-in-out">
@@ -104,30 +104,30 @@
         </button>
       </div>
 
-      <div class="separator text-gray-700 text-sm">Or</div>
+      <div class="separator text-gray-700 text-sm">Ou</div>
 
       <form action="#" method="POST">
         <input type="hidden" name="remember" value="true">
         <div class="rounded-md shadow-sm">
           <div>
-            <input aria-label="Email address" name="email" type="email" required class="rounded-t-md" placeholder="Email address">
+            <input aria-label="Adresse courriel" name="email" type="email" required class="rounded-t-md" placeholder="Adresse courriel">
           </div>
           <div class="-mt-px">
-            <input aria-label="Password" name="password" type="password" required class="rounded-b-md" placeholder="Password">
+            <input aria-label="Mot de passe" name="password" type="password" required class="rounded-b-md" placeholder="Mot de passe">
           </div>
         </div>
 
         <div class="mt-6 flex items-center justify-end">
           <div class="text-sm leading-5">
             <a href="/signin" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-              I already have an account
+              J'ai déjà un compte
             </a>
           </div>
         </div>
 
         <div class="mt-6">
           <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-            Sign up
+            Créer le compte
           </button>
         </div>
       </form>
