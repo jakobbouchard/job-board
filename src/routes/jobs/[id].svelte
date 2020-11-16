@@ -66,18 +66,12 @@
   <title>{ job.data.name }</title>
 </svelte:head>
 
-<div class="md:flex md:items-center md:justify-between">
+<div class="mb-6 pb-6 border-b border-gray-400 md:flex md:items-center md:justify-between">
   <div class="flex-1 min-w-0">
     <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
       { job.data.name }
     </h2>
     <div class="info-container">
-      <div class="info">
-        <div class="icon">
-          <Icon icon={ faSuitcase } />
-        </div>
-        { job.data.type }
-      </div>
       <div class="info">
         <div class="icon">
           <Icon icon={ faBuilding } />
@@ -89,6 +83,12 @@
           <Icon icon={ faLocationArrow } />
         </div>
         { job.data.location }
+      </div>
+      <div class="info">
+        <div class="icon">
+          <Icon icon={ faSuitcase } />
+        </div>
+        { job.data.type }
       </div>
       <div class="info">
         <div class="icon">
@@ -110,3 +110,6 @@
   </div>
 </div>
 
+<p>
+  { job.data.description }
+</p>
