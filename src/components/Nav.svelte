@@ -1,61 +1,92 @@
 <script>
-	export let segment;
+  import ProfileDropdown from '../components/ProfileDropdown.svelte';
+  import NavLinks from '../components/NavLinks.svelte';
+  import { auth } from '../firebase';
+  import { authState } from 'rxfire/auth';
+
+  export let segment;
+
+  let currentUser;
+  const unsubscribe = authState(auth).subscribe(u => currentUser = u);
+
+  async function toggleMobileNav() {
+    const menu = document.querySelector('#mobile-nav');
+    const openBtn = document.querySelector('#open-nav-icon');
+    const closeBtn = document.querySelector('#close-nav-icon');
+
+    if (menu.classList.contains('hidden')) {
+      menu.classList.replace('hidden', 'block');
+      openBtn.classList.replace('block', 'hidden');
+      closeBtn.classList.replace('hidden', 'block');
+    } else {
+      menu.classList.replace('block', 'hidden');
+      openBtn.classList.replace('hidden', 'block');
+      closeBtn.classList.replace('block', 'hidden');
+    }
+  }
 </script>
 
-<style>
-	nav {
-		border-bottom: 1px solid rgba(255,62,0,0.1);
-		font-weight: 300;
-		padding: 0 1em;
-	}
+<nav class="bg-gray-800">
+  <div class="px-2 sm:px-6 lg:px-8">
+    <div class="relative flex items-center justify-between h-16">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <!-- Mobile menu button -->
+        <button on:click={toggleMobileNav} class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out" aria-label="Main menu" aria-expanded="false">
+          <!-- Heroicon name: menu -->
+          <svg id="open-nav-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Heroicon name: x -->
+          <svg id="close-nav-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex-shrink-0">
+          <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/v1/workflow-mark-on-dark.svg" alt="Workflow logo">
+          <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/v1/workflow-logo-on-dark.svg" alt="Workflow logo">
+        </div>
+        <div class="hidden sm:block sm:ml-6">
+          <div class="flex">
+            <NavLinks {segment}/>
+          </div>
+        </div>
+      </div>
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <!-- Profile dropdown -->
+        {#if currentUser}
+        <div class="ml-3 relative">
+          <ProfileDropdown {...currentUser} />
+        </div>
+        {:else}
+        <div class="ml-3 relative">
+          <a href="/signin" class="inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+            Connexion
+          </a>
+        </div>
+        {/if}
+        <div class="ml-3 relative">
+          <a href="/jobs/post" class="inline-flex justify-center py-2 px-4 text-sm leading-5 font-medium text-white transition duration-150 ease-in-out hidden sm:block">
+            Publier une offre
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	ul {
-		margin: 0;
-		padding: 0;
-	}
+  <!--
+    Mobile menu, toggle classes based on menu state.
+  -->
+  <div id="mobile-nav" class="hidden sm:hidden">
+    <div class="px-2 pt-2 pb-3">
+      <div class="mb-4 pb-2 border-b border-gray-400">
+        <NavLinks {segment}/>
+      </div>
 
-	/* clearfix */
-	ul::after {
-		content: '';
-		display: block;
-		clear: both;
-	}
-
-	li {
-		display: block;
-		float: left;
-	}
-
-	[aria-current] {
-		position: relative;
-		display: inline-block;
-	}
-
-	[aria-current]::after {
-		position: absolute;
-		content: '';
-		width: calc(100% - 1em);
-		height: 2px;
-		background-color: rgb(255,62,0);
-		display: block;
-		bottom: -1px;
-	}
-
-	a {
-		text-decoration: none;
-		padding: 1em 0.5em;
-		display: block;
-	}
-</style>
-
-<nav>
-	<ul>
-		<li><a aria-current="{segment === undefined ? 'page' : undefined}" href=".">home</a></li>
-		<li><a aria-current="{segment === 'about' ? 'page' : undefined}" href="about">about</a></li>
-
-		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-		     the blog data when we hover over the link or tap it on a touchscreen -->
-		<li><a rel=prefetch aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog">blog</a></li>
-		<li><a aria-current="{segment === 'login' ? 'page' : undefined}" href="login">login</a></li>
-	</ul>
+      <a href="/jobs/post" class="block m-1 p-2 border border-transparent leading-5 rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+        Publier une offre
+      </a>
+    </div>
+  </div>
 </nav>
