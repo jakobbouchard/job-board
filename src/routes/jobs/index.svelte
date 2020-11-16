@@ -1,6 +1,16 @@
+<script context="module">
+  export function preload() {
+    return this.fetch(`jobs.json`).then(r => r.json()).then(jobs => {
+      return { jobs };
+    });
+  }
+</script>
+
 <script>
   import Search from '../../components/jobs/Search.svelte';
   import Job from '../../components/jobs/Job.svelte';
+
+  export let jobs;
 </script>
 
 <style lang="postcss">
@@ -28,15 +38,15 @@
 
 <div class="p-4 bg-white overflow-hidden sm:rounded-lg">
   <ul id="timeline" class="relative">
-    <Job name="Cashier" type="Part-time" company="McDonald's" location="Gatineau" />
-    <Job name="Geek Squad" type="Part-time" company="Best Buy" location="Ottawa" />
-    <Job name="Front End Developer" type="Full-time" company="Distantia" location="Gatineau" />
+    {#each jobs as job}
+      <Job id={job.id} {...job.data} />
+    {/each}
 
     <li class="date">Jan 1st</li>
 
-    <Job name="Back End Developer" type="Full-time" company="Spiria" location="Ottawa" />
-    <Job name="Front End Developer" type="Part-time" company="Justice Canada" location="Ottawa" />
-    <Job name="Designer" type="Full-time" company="Trinergie" location="Gatineau" />
+    {#each jobs as job}
+      <Job id={job.id} {...job.data} />
+    {/each}
   </ul>
 
   <div
