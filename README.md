@@ -1,7 +1,6 @@
 # Job Board for Cégep de l'Outaouais
 
 ![GitHub](https://img.shields.io/github/license/jakobbouchard/job-board)
-![GitHub](https://img.shields.io/github/workflow/status/jakobbouchard/job-board/ci)
 
 ![Svelte](https://img.shields.io/badge/Framework-Svelte-df420f?logo=svelte)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind-CSS-38b2ac?logo=tailwind-css)
