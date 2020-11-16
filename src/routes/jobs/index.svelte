@@ -1,16 +1,14 @@
-<script context="module">
-  export function preload() {
-    return this.fetch(`jobs.json`).then(r => r.json()).then(jobs => {
-      return { jobs };
-    });
-  }
-</script>
-
 <script>
   import Search from '../../components/jobs/Search.svelte';
   import Job from '../../components/jobs/Job.svelte';
+  import { firestore } from '../../firebase';
+  import { collectionData } from 'rxfire/firestore';
+  import { startWith } from 'rxjs/operators';
 
-  export let jobs;
+  // Query requires an index, see screenshot below
+  const query = firestore.collection('jobs').orderBy('createdAt');
+
+  const jobs = collectionData(query, 'id').pipe(startWith([]));
 </script>
 
 <style lang="postcss">
@@ -38,13 +36,13 @@
 
 <div class="p-4 bg-white overflow-hidden sm:rounded-lg">
   <ul id="timeline" class="relative">
-    {#each jobs as job}
-      <Job id={job.id} {...job.data} />
+    {#each $jobs as job}
+      <Job {...job} />
     {/each}
 
     <li class="date">1er janvier</li>
 
-    {#each jobs as job}
+    {#each $jobs as job}
       <Job id={job.id} {...job.data} />
     {/each}
   </ul>
