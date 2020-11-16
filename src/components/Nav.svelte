@@ -27,7 +27,7 @@
 </script>
 
 <nav class="bg-gray-800">
-  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+  <div class="px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button -->
@@ -62,10 +62,15 @@
         {:else}
         <div class="ml-3 relative">
           <a href="/signin" class="inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-            Sign in
+            Connexion
           </a>
         </div>
         {/if}
+        <div class="ml-3 relative">
+          <a href="/jobs/post" class="inline-flex justify-center py-2 px-4 text-sm leading-5 font-medium text-white transition duration-150 ease-in-out hidden sm:block">
+            Publier une offre
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -75,7 +80,13 @@
   -->
   <div id="mobile-nav" class="hidden sm:hidden">
     <div class="px-2 pt-2 pb-3">
-      <NavLinks {segment}/>
+      <div class="mb-4 pb-2 border-b border-gray-400">
+        <NavLinks {segment}/>
+      </div>
+
+      <a href="/jobs/post" class="block m-1 p-2 border border-transparent leading-5 rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+        Publier une offre
+      </a>
     </div>
   </div>
 </nav>
