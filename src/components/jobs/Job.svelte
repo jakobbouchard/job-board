@@ -2,6 +2,7 @@
   import Icon from 'fa-svelte';
   import { faSuitcase, faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 
+  export let id;
   export let name;
   export let type;
   export let company;
@@ -65,12 +66,12 @@
 </style>
 
 <li>
-  <a href="#">
+  <a href="/jobs/{ id }">
     <div class="top-info">
       <div class="job-name">
         { name }
       </div>
-      <span class="job-type {type === "Full-time" ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}">
+      <span class="job-type {type === "Temps plein" ? 'bg-green-100 text-green-800' : type === "Temps partiel" ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800'}">
         { type }
       </span>
     </div>
