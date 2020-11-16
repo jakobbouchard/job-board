@@ -1,4 +1,5 @@
 <script>
+  import Search from '../../components/jobs/Search.svelte';
   import Job from '../../components/jobs/Job.svelte';
 </script>
 
@@ -23,22 +24,7 @@
   <title>Jobs</title>
 </svelte:head>
 
-<div>
-  <label for="Search" class="block text-xl leading-5 text-gray-700">Search</label>
-
-  <div class="mt-1 relative ">
-    <div class="border border-gray-600 border-rounded-md shadow-lg">
-    <input id="Search" class="form-input block w-full p-4 pl-7 pr-12 sm:text-xl sm:leading-5" placeholder="Search...">
-    </div>
-    <div class="absolute inset-y-0 right-0 flex items-center border border-gray-600 border-rounded-md shadow-lg">
-      <select aria-label="Statuts" class="form-select h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-600 sm:text-sm sm:leading-5">
-        <option>Contrat</option>
-        <option>Temps plein</option>
-        <option>Temps partiel</option>
-      </select>
-    </div>
-  </div>
-</div>
+<Search />
 
 <div class="p-4 bg-white overflow-hidden sm:rounded-lg">
   <ul id="timeline" class="relative">
