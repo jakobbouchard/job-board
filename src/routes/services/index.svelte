@@ -6,15 +6,20 @@
   import { startWith } from 'rxjs/operators';
 
   // Based on https://fireship.io/lessons/svelte-v3-overview-firebase/
+  let query = firestore.collection('jobs').orderBy('createdAt');
+  let services = collectionData(query, 'id').pipe(startWith([]));
 
-  const services = collectionData(query, 'id').pipe(startWith([]));
+  function handleSearch(event) {
+    query = firestore.collection('jobs').where('type', '==', event.detail.jobType).orderBy('createdAt');
+    services = collectionData(query, 'id').pipe(startWith([]));
+  }
 </script>
 
 <style lang="postcss">
   @layer components {
-    .date {
+    /* .date {
       @apply inline-block border border-gray-400 bg-white relative z-10 rounded-full py-2 px-4 mb-4;
-    }
+    } */
     #timeline::after{
       content: '';
       width: 1px;
@@ -31,21 +36,18 @@
   <title>Services</title>
 </svelte:head>
 
-<Search />
+<Search on:search={handleSearch} />
 
 <div class="p-4 bg-white overflow-hidden sm:rounded-lg">
   <ul id="timeline" class="relative">
     {#each $services as service}
-      <Service {...service} />
+      <Service { ...service } />
     {/each}
 
-    <li class="date">1er janvier</li>
-
-    {#each $services as service}
-      <Service {...service} />
-    {/each}
+    <!-- <li class="date">1er janvier</li> -->
   </ul>
 
+  <!-- Pagination is possible using https://firebase.google.com/docs/firestore/query-data/query-cursors
   <div
     class="relative px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
     <div class="flex-1 flex justify-between sm:hidden">
@@ -110,4 +112,5 @@
       </div>
     </div>
   </div>
+  -->
 </div>
