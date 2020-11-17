@@ -1,4 +1,5 @@
 <script context="module">
+  import Profile from '../components/Profile.svelte';
   import { auth } from '../firebase';
   import { authState } from 'rxfire/auth';
 
@@ -9,7 +10,6 @@
     }
   }
 </script>
-
 <script>
   // Inspired by https://fireship.io/lessons/svelte-v3-overview-firebase/
   let currentUser;
@@ -21,13 +21,10 @@
 </svelte:head>
 
 <div class="max-w-5xl mx-auto p-8">
-  {#if currentUser.displayName}
-  <h3>Bonjour { currentUser.displayName } !</h3>
+  {#if currentUser}
+    <Profile {...currentUser} />
   {/if}
-  {#if currentUser.photoURL}
-  <img referrerpolicy="no-referrer" src={ currentUser.photoURL } width="100" alt={ currentUser.displayName }>
-  {/if}
-  <p>Votre UID est { currentUser.uid }</p>
 
   <h1>Ceci est notre profil protégé ! Uniquement visible lorsque vous êtes connecté avec Firebase</h1>
 </div>
+
