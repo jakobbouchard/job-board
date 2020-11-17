@@ -49,7 +49,7 @@
 </style>
 
 {#if (segment !== 'signin' && segment !== 'signup')}
-  <Nav {segment}/>
+  <Nav { segment } />
 
   <main class="relative max-w-5xl mx-auto p-8 bg-white">
     <slot></slot>

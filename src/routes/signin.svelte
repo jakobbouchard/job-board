@@ -92,14 +92,14 @@
       <div class="flex">
         <button on:click={() => login('google')} type="submit" class="group google-button">
           <span class="mr-2 icon-container">
-            <Icon class="text-white transition ease-in-out duration-150" icon={faGoogle} />
+            <Icon class="text-white transition ease-in-out duration-150" icon={ faGoogle } />
           </span>
           Continuer avec Google
         </button>
 
         <button on:click={() => login('twitter')} type="submit" class="group relative w-1/6 flex justify-center ml-3 md:ml-4 py-2 px-4 border border-transparent border-gray-400 text-sm leading-5 font-medium rounded-md bg-white hover:border-gray-600 focus:outline-none focus:border-gray-800 focus:shadow-outline-gray active:bg-gray-800 transition duration-150 ease-in-out">
           <span class="icon-container">
-            <Icon class="text-gray-600 group-hover:text-gray-800 transition ease-in-out duration-150" icon={faTwitter} />
+            <Icon class="text-gray-600 group-hover:text-gray-800 transition ease-in-out duration-150" icon={ faTwitter } />
           </span>
         </button>
       </div>
