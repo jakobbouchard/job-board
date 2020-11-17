@@ -1,10 +1,13 @@
 <script context="module">
+
   // Based on https://github.com/sveltejs/sapper-template
   export async function preload({ params }) {
+
     // the `id` parameter is available because
     // this file is called [id].svelte
-    const res = await this.fetch(`jobs/${params.id}.json`);
+    const res = await this.fetch(`jobs/${ params.id }.json`);
     const data = await res.json();
+
     if (res.status === 200) {
       return { job: data };
     } else {
@@ -15,7 +18,7 @@
 
 <script>
   import Icon from 'fa-svelte';
-  import { faSuitcase, faLocationArrow, faCalendar, faBuilding, faPaperclip } from '@fortawesome/free-solid-svg-icons';
+  import { faSuitcase, faLocationArrow, faCalendar, faUser, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 
   export let job;
   const createdDate = new Date(job.data.createdAt.seconds * 1000)
@@ -75,7 +78,7 @@
     <div class="info-container">
       <div class="info">
         <div class="icon">
-          <Icon icon={ faBuilding } />
+          <Icon icon={ faUser } />
         </div>
         { job.data.company }
       </div>

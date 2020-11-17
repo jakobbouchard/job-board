@@ -1,6 +1,6 @@
 <script>
   import Icon from 'fa-svelte';
-  import { faPerson, faLocationArrow } from '@fortawesome/free-solid-svg-icons';
+  import { faUser, faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 
   export let id;
   export let name;
@@ -78,7 +78,7 @@
     <div class="bottom-info">
       <div class="company">
         <div class="icon">
-          <Icon icon={ faPerson } />
+          <Icon icon={ faUser } />
         </div>
         { company }
       </div>
