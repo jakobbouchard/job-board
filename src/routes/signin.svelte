@@ -34,9 +34,9 @@
     const { email, password } = event.target.elements;
 
     auth.signInWithEmailAndPassword(email.value, password.value).catch(function(err) {
-      if (err.code == 'invalid-email') {
+      if (err.code == 'auth/invalid-email') {
         error = 'Veuillez entrer une adresse courriel valide'
-      } else if (err.code == 'user-not-found' || err.code == 'wrong-password') {
+      } else if (err.code == 'auth/user-not-found' || err.code == 'auth/wrong-password') {
         error = 'Les identifiants que vous avez entrés sont invalides'
       } else {
         error = err.message || err;
