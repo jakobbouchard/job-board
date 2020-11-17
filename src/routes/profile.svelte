@@ -24,7 +24,5 @@
   {#if currentUser}
     <Profile {...currentUser} />
   {/if}
-
-  <h1>Ceci est notre profil protégé ! Uniquement visible lorsque vous êtes connecté avec Firebase</h1>
 </div>
 
