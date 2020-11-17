@@ -1,4 +1,5 @@
 <script context="module">
+  // Based on https://github.com/sveltejs/sapper-template
   export async function preload({ params }) {
     // the `id` parameter is available because
     // this file is called [id].svelte

@@ -11,6 +11,7 @@
   }
 </script>
 <script>
+  // Inspired by https://fireship.io/lessons/svelte-v3-overview-firebase/
   let currentUser;
   const unsubscribe = authState(auth).subscribe(u => currentUser = u);
 </script>

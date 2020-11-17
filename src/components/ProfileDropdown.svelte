@@ -9,6 +9,7 @@
   export let photoURL;
   export let email;
 
+  // Inspired by https://codechips.me/tailwind-ui-react-vs-svelte/
   let show = false; // menu state
   let menu = null; // menu wrapper DOM reference
 
@@ -123,18 +124,24 @@
             </div>
             Profil
           </a>
+          <!-- This was put there so that students could "like" job offers and
+               be able to get to them later on.
           <a href="#" class="link">
             <div class="link-icon">
               <Icon icon={ faSuitcase } />
             </div>
             Mes emplois
           </a>
+          -->
+          <!-- This was put there for a settings page, we weren't sure what was
+               going to be in it, so we didn't create one yet.
           <a href="#" class="link">
             <div class="link-icon">
               <Icon icon={ faCog } />
             </div>
             Paramètres
           </a>
+          -->
           <a href="." class="link" on:click={ () => auth.signOut() }>
             <div class="link-icon">
               <Icon icon={ faSignOutAlt } />

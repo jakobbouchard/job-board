@@ -7,6 +7,7 @@
 
   export let segment;
 
+  // Based on https://medium.com/swlh/authentication-with-sapper-firebase-d3b060ad30e5
   const { session } = stores();
 
   onMount(async () => {

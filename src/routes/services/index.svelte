@@ -5,8 +5,7 @@
   import { collectionData } from 'rxfire/firestore';
   import { startWith } from 'rxjs/operators';
 
-  // Query requires an index, see screenshot below
-  const query = firestore.collection('jobs').orderBy('createdAt');
+  // Based on https://fireship.io/lessons/svelte-v3-overview-firebase/
 
   const services = collectionData(query, 'id').pipe(startWith([]));
 </script>
