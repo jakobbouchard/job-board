@@ -1,4 +1,7 @@
 <script context="module">
+  import { auth } from '../firebase';
+  import { authState } from 'rxfire/auth';
+
   export async function preload(page, session) {
     let { user } = session;
     if (!user) {
@@ -8,9 +11,6 @@
 </script>
 
 <script>
-  import { auth } from '../firebase';
-  import { authState } from 'rxfire/auth';
-
   // Inspired by https://fireship.io/lessons/svelte-v3-overview-firebase/
   let currentUser;
   const unsubscribe = authState(auth).subscribe(u => currentUser = u);
