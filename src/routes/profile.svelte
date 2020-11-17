@@ -21,7 +21,9 @@
 </svelte:head>
 
 <div class="max-w-5xl mx-auto p-8">
-  <h3>Bonjour { currentUser.displayName ? currentUser.displayName : '' } !</h3>
+  {#if currentUser.displayName}
+  <h3>Bonjour { currentUser.displayName } !</h3>
+  {/if}
   {#if currentUser.photoURL}
   <img referrerpolicy="no-referrer" src={ currentUser.photoURL } width="100" alt={ currentUser.displayName }>
   {/if}
