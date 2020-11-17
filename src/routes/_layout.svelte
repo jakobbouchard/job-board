@@ -23,6 +23,7 @@
         Cookies.set('token', token);
         $session.user = token;
         console.log(`User found and session set!`);
+        console.log(user)
 
         // refreshes token every 55 minutes to also sync with server-side.
         window.timeoutId = setTimeout(() => {
@@ -51,7 +52,7 @@
 {#if (segment !== 'signin' && segment !== 'signup')}
   <Nav { segment } />
 
-  <main class="relative max-w-5xl mx-auto p-8 bg-white">
+  <main class="relative">
     <slot></slot>
   </main>
 {:else}

@@ -18,7 +18,7 @@
 
 <script>
   import Icon from 'fa-svelte';
-  import { faSuitcase, faLocationArrow, faCalendar, faUser, faPaperclip } from '@fortawesome/free-solid-svg-icons';
+  import { faSuitcase, faLocationArrow, faCalendar, faBuilding, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 
   export let job;
   const createdDate = new Date(job.data.createdAt.seconds * 1000)
@@ -70,50 +70,52 @@
   <title>{ job.data.name }</title>
 </svelte:head>
 
-<div class="mb-6 pb-6 border-b border-gray-400 md:flex md:items-center md:justify-between">
-  <div class="flex-1 min-w-0">
-    <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
-      { job.data.name }
-    </h2>
-    <div class="info-container">
-      <div class="info">
-        <div class="icon">
-          <Icon icon={ faUser } />
+<div class="max-w-5xl mx-auto p-8">
+  <div class="mb-6 pb-6 border-b border-gray-400 md:flex md:items-center md:justify-between">
+    <div class="flex-1 min-w-0">
+      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
+        { job.data.name }
+      </h2>
+      <div class="info-container">
+        <div class="info">
+          <div class="icon">
+            <Icon icon={ faBuilding } />
+          </div>
+          { job.data.company }
         </div>
-        { job.data.company }
-      </div>
-      <div class="info">
-        <div class="icon">
-          <Icon icon={ faLocationArrow } />
+        <div class="info">
+          <div class="icon">
+            <Icon icon={ faLocationArrow } />
+          </div>
+          { job.data.location }
         </div>
-        { job.data.location }
-      </div>
-      <div class="info">
-        <div class="icon">
-          <Icon icon={ faSuitcase } />
+        <div class="info">
+          <div class="icon">
+            <Icon icon={ faSuitcase } />
+          </div>
+          { job.data.type }
         </div>
-        { job.data.type }
-      </div>
-      <div class="info">
-        <div class="icon">
-          <Icon icon={ faCalendar } />
+        <div class="info">
+          <div class="icon">
+            <Icon icon={ faCalendar } />
+          </div>
+          Publié le { formattedDate }
         </div>
-        Publié le { formattedDate }
       </div>
     </div>
+    <div class="mt-5 flex">
+      <span class="shadow-sm rounded-md">
+        <button type="button" class="button">
+          <div class="icon">
+            <Icon icon={ faPaperclip } />
+          </div>
+          Appliquer
+        </button>
+      </span>
+    </div>
   </div>
-  <div class="mt-5 flex">
-    <span class="shadow-sm rounded-md">
-      <button type="button" class="button">
-        <div class="icon">
-          <Icon icon={ faPaperclip } />
-        </div>
-        Appliquer
-      </button>
-    </span>
-  </div>
-</div>
 
-<p>
-  { job.data.description }
-</p>
+  <p>
+    { job.data.description }
+  </p>
+</div>

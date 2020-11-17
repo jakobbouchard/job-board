@@ -20,10 +20,12 @@
   <title>Profil</title>
 </svelte:head>
 
-<h3>Bonjour { currentUser.displayName ? currentUser.displayName : '' } !</h3>
-{#if currentUser.photoURL}
-<img referrerpolicy="no-referrer" src={ currentUser.photoURL } width="100" alt={ currentUser.displayName }>
-{/if}
-<p>Votre UID est { currentUser.uid }</p>
+<div class="max-w-5xl mx-auto p-8">
+  <h3>Bonjour { currentUser.displayName ? currentUser.displayName : '' } !</h3>
+  {#if currentUser.photoURL}
+  <img referrerpolicy="no-referrer" src={ currentUser.photoURL } width="100" alt={ currentUser.displayName }>
+  {/if}
+  <p>Votre UID est { currentUser.uid }</p>
 
-<h1>Ceci est notre profil protégé ! Uniquement visible lorsque vous êtes connecté avec Firebase</h1>
+  <h1>Ceci est notre profil protégé ! Uniquement visible lorsque vous êtes connecté avec Firebase</h1>
+</div>
