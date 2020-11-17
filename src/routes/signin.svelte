@@ -4,15 +4,34 @@
   import Icon from 'fa-svelte'
   import { faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
-  async function login(button) {
+  // This is probably not super secure, but uh it works for now as a MVP.
+  let email;
+  let password;
+  let error;
+
+  async function login(loginMethod) {
     let provider;
-    switch (button) {
+    switch (loginMethod) {
       case 'google':
         provider = googleProvider;
         break;
       case 'twitter':
         provider = twitterProvider;
         break;
+      case 'email':
+        auth.signInwithEmailAndPassword(email, password).then((res) => {
+          goto('/profile');
+        }).catch(function(err) {
+          if (err.code == 'invalid-email') {
+            error = 'Veuillez entrer une adresse courriel valide'
+          } else if (err.code == 'user-not-found' || err.code == 'wrong-password') {
+            error = 'Les identifiants que vous avez entrés sont invalides'
+          } else {
+            error = err.message || err;
+          }
+          console.log("Something went wrong:", err.message || err);
+        })
+        return;
     }
 
     try {
@@ -119,20 +138,23 @@
 
         <div class="mt-6 flex items-center justify-between">
           <div class="text-sm leading-5">
-            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-              Mot de passe oublié ?
-            </a>
-          </div>
-
-          <div class="text-sm leading-5">
             <a href="/signup" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
               Créer un compte
             </a>
           </div>
+
+          <!-- Didn't have time to create the feature/page, but it's extremely
+               easy to implement: https://firebase.google.com/docs/auth/web/manage-users#send_a_password_reset_email
+          <div class="text-sm leading-5">
+            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
+              Mot de passe oublié ?
+            </a>
+          </div>
+          -->
         </div>
 
         <div class="mt-6">
-          <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+          <button on:submit={() => login('email')} type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
             Se connecter
           </button>
         </div>

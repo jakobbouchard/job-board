@@ -4,15 +4,36 @@
   import Icon from 'fa-svelte'
   import { faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
-  async function login(button) {
+  // This is probably not super secure, but uh it works for now as a MVP.
+  let email;
+  let password;
+  let error;
+
+  async function login(loginMethod) {
     let provider;
-    switch (button) {
+    switch (loginMethod) {
       case 'google':
         provider = googleProvider;
         break;
       case 'twitter':
         provider = twitterProvider;
         break;
+      case 'email':
+        auth.createUserWithEmailAndPassword(email, password).then((res) => {
+          goto('/profile');
+        }).catch(function(err) {
+          if (err.code == 'invalid-email') {
+            error = 'Veuillez entrer une adresse courriel valide';
+          } else if (err.code == 'email-already-in-use') {
+            error = 'Un compte est déjà associé à cette adresse courriel';
+          } else if (err.code == 'weak-password') {
+            error = 'Le mot de passe entré n\'est pas assez complexe';
+          } else {
+            error = err.message || err;
+          }
+          console.log("Something went wrong:", err.message || err);
+        });
+        return;
     }
 
     try {
@@ -79,6 +100,22 @@
   <title>Inscription</title>
 </svelte:head>
 
+{#if error}
+<div class="fixed mt-6 max-w-xl bg-red-100 border-t-4 border-red-500 rounded-b text-red-900 px-4 py-3 shadow-md" role="alert">
+  <div class="flex">
+    <div class="py-1">
+      <svg class="fill-current h-6 w-6 text-red-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+      </svg>
+    </div>
+    <div>
+      <p class="font-bold">Erreur</p>
+      <p class="text-sm">{ error }</p>
+    </div>
+  </div>
+</div>
+{/if}
+
 <div class="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
   <div class="max-w-md w-full">
     <div>
@@ -107,17 +144,16 @@
       <div class="separator text-gray-700 text-sm">Ou</div>
 
       <form action="#" method="POST">
-        <input type="hidden" name="remember" value="true">
         <div class="rounded-md shadow-sm">
           <div>
-            <input aria-label="Adresse courriel" name="email" type="email" required class="rounded-t-md" placeholder="Adresse courriel">
+            <input bind:value={ email } aria-label="Adresse courriel" name="email" type="email" required class="rounded-t-md" placeholder="Adresse courriel">
           </div>
           <div class="-mt-px">
-            <input aria-label="Mot de passe" name="password" type="password" required class="rounded-b-md" placeholder="Mot de passe">
+            <input bind:value={ password } aria-label="Mot de passe" name="password" type="password" required class="rounded-b-md" placeholder="Mot de passe">
           </div>
         </div>
 
-        <div class="mt-6 flex items-center justify-end">
+        <div class="mt-6 flex items-center">
           <div class="text-sm leading-5">
             <a href="/signin" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
               J'ai déjà un compte
@@ -126,7 +162,7 @@
         </div>
 
         <div class="mt-6">
-          <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+          <button on:submit={() => login('email')} type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
             Créer le compte
           </button>
         </div>
