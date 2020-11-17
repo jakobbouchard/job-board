@@ -32,12 +32,13 @@
     const { email, password } = event.target.elements;
 
     auth.createUserWithEmailAndPassword(email.value, password.value).catch(function(err) {
+      console.log(err.code)
       if (err.code == 'invalid-email') {
         error = 'Veuillez entrer une adresse courriel valide';
       } else if (err.code == 'email-already-in-use') {
         error = 'Un compte est déjà associé à cette adresse courriel';
       } else if (err.code == 'weak-password') {
-        error = 'Le mot de passe entré n\'est pas assez complexe';
+        error = 'Le mot de passe doit être au moins 6 caractères';
       } else {
         error = err.message || err;
       }
