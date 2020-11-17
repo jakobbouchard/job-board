@@ -1,6 +1,6 @@
 <script>
-  import Search from '../../components/jobs/Search.svelte';
-  import Job from '../../components/jobs/Job.svelte';
+  import Search from '../../components/services/Search.svelte';
+  import Service from '../../components/services/Service.svelte';
   import { firestore } from '../../firebase';
   import { collectionData } from 'rxfire/firestore';
   import { startWith } from 'rxjs/operators';
@@ -8,7 +8,7 @@
   // Query requires an index, see screenshot below
   const query = firestore.collection('jobs').orderBy('createdAt');
 
-  const jobs = collectionData(query, 'id').pipe(startWith([]));
+  const services = collectionData(query, 'id').pipe(startWith([]));
 </script>
 
 <style lang="postcss">
@@ -36,14 +36,14 @@
 
 <div class="p-4 bg-white overflow-hidden sm:rounded-lg">
   <ul id="timeline" class="relative">
-    {#each $jobs as job}
-      <Job {...job} />
+    {#each $services as service}
+      <Service {...service} />
     {/each}
 
     <li class="date">1er janvier</li>
 
-    {#each $jobs as job}
-      <Job {...job} />
+    {#each $services as service}
+      <Service {...service} />
     {/each}
   </ul>
 
