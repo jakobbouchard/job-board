@@ -5,7 +5,7 @@
   import Icon from 'fa-svelte'
   import { faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
-  let error = '';
+  let error = null;
 
   async function login(loginMethod) {
     let provider;
@@ -43,7 +43,7 @@
       }
       console.log("Something went wrong:", err.message || err);
     });
-    if (error != '') {
+    if (!error) {
       goto('/profile');
     }
   }

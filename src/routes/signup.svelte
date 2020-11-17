@@ -5,7 +5,7 @@
   import Icon from 'fa-svelte'
   import { faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
-  let error = '';
+  let error = null;
 
   async function login(loginMethod) {
     let provider;
@@ -32,7 +32,6 @@
     const { email, password } = event.target.elements;
 
     auth.createUserWithEmailAndPassword(email.value, password.value).catch(function(err) {
-      console.log(err.code)
       if (err.code == 'auth/invalid-email') {
         error = 'Veuillez entrer une adresse courriel valide';
       } else if (err.code == 'auth/email-already-in-use') {
@@ -44,7 +43,7 @@
       }
       console.log("Something went wrong:", err.message || err);
     });
-    if (error != '') {
+    if (!error) {
       goto('/profile');
     }
   }
