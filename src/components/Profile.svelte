@@ -12,7 +12,7 @@
         <img class="my-4 w-20 h-20 rounded-full" referrerpolicy="no-referrer" src={ photoURL } width="100" alt={ displayName }>
         {/if}
         {#if displayName}
-        <h4 class="my-4 text-xl font-medium text-gray-900">Bonjour { displayName } !</h4>
+        <h4 class="mb-2 text-xl font-medium text-gray-900">Bonjour { displayName } !</h4>
         {/if}
         <h4 class="mb-4 border-b border-gray-400 pb-4 text-gray-800" >{ email }</h4>
 
