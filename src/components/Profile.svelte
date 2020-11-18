@@ -66,18 +66,14 @@
                 <label for="fieldOfStudy" class="block text-sm font-medium leading-5 text-gray-700">
                   Champ d'études
                 </label>
-                <div class="mt-1 flex rounded-md shadow-sm">
-                  <input id="fieldOfStudy" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="Intégration multimédia">
-                </div>
+                <input id="fieldOfStudy" class="mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="Intégration multimédia">
               </div>
 
               <div class="col-span-6 sm:col-span-2">
                 <label for="graduationYear" class="block text-sm font-medium leading-5 text-gray-700">
                   Année de graduation
                 </label>
-                <div class="mt-1 flex rounded-md shadow-sm">
-                  <input type="number" id="graduationYear" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="2021">
-                </div>
+                <input type="number" id="graduationYear" class="mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="2021">
               </div>
             </div>
           </div>
