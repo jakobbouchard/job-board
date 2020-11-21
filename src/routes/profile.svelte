@@ -11,6 +11,7 @@
   }
 </script>
 <script>
+  // Inspired by https://fireship.io/lessons/svelte-v3-overview-firebase/
   let currentUser;
   const unsubscribe = authState(auth).subscribe(u => currentUser = u);
 </script>
@@ -19,8 +20,9 @@
   <title>Profil</title>
 </svelte:head>
 
-{#if currentUser}
-  <Profile {...currentUser} />
-{/if}
+<div class="max-w-5xl mx-auto p-8">
+  {#if currentUser}
+    <Profile {...currentUser} />
+  {/if}
+</div>
 
-<h1>Ceci est notre profil protégé ! Uniquement visible lorsque vous êtes connecté avec Firebase</h1>

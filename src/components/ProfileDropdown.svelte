@@ -9,6 +9,7 @@
   export let photoURL;
   export let email;
 
+  // Inspired by https://codechips.me/tailwind-ui-react-vs-svelte/
   let show = false; // menu state
   let menu = null; // menu wrapper DOM reference
 
@@ -47,7 +48,8 @@
       @apply outline-none border-white;
     }
 
-    .profile-icon > img {
+    .profile-icon > img,
+    .profile-icon > svg {
       @apply h-8 w-8 rounded-full;
     }
 
@@ -98,7 +100,17 @@
       on:click={() => (show = !show)}
       class="profile-icon"
     >
+      {#if photoURL}
       <img referrerpolicy="no-referrer" src={ photoURL } alt={ displayName }/>
+      {:else}
+      <svg enable-background="new 312.809 0 401 401" version="1.1" viewBox="312.809 0 401 401" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+        <g transform="matrix(1.223 0 0 1.223 -467.5 -843.44)">
+          <rect x="601.45" y="653.07" width="401" height="401" fill="#E4E6E7"/>
+          <path d="m802.38 908.08c-84.515 0-153.52 48.185-157.38 108.62h314.79c-3.87-60.44-72.9-108.62-157.41-108.62z" fill="#AEB4B7"/>
+          <path d="m881.37 818.86c0 46.746-35.106 84.641-78.41 84.641s-78.41-37.895-78.41-84.641 35.106-84.641 78.41-84.641c43.31 0 78.41 37.9 78.41 84.64z" fill="#AEB4B7"/>
+        </g>
+      </svg>
+      {/if}
     </button>
 
     {#if show}
@@ -108,9 +120,19 @@
         class="dropdown"
       >
         <div class="user-info">
+          {#if photoURL}
           <img class="user-image" referrerpolicy="no-referrer" src={ photoURL } alt={ displayName }/>
+          {:else}
+          <svg class="user-image" enable-background="new 312.809 0 401 401" version="1.1" viewBox="312.809 0 401 401" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+            <g transform="matrix(1.223 0 0 1.223 -467.5 -843.44)">
+              <rect x="601.45" y="653.07" width="401" height="401" fill="#E4E6E7"/>
+              <path d="m802.38 908.08c-84.515 0-153.52 48.185-157.38 108.62h314.79c-3.87-60.44-72.9-108.62-157.41-108.62z" fill="#AEB4B7"/>
+              <path d="m881.37 818.86c0 46.746-35.106 84.641-78.41 84.641s-78.41-37.895-78.41-84.641 35.106-84.641 78.41-84.641c43.31 0 78.41 37.9 78.41 84.64z" fill="#AEB4B7"/>
+            </g>
+          </svg>
+          {/if}
           <div class="user-name" disabled>
-            { displayName }
+            { displayName || 'Utilisateur' }
           </div>
           <div class="user-email" disabled>
             { email }
@@ -123,18 +145,24 @@
             </div>
             Profil
           </a>
+          <!-- This was put there so that students could "like" job offers and
+               be able to get to them later on.
           <a href="#" class="link">
             <div class="link-icon">
               <Icon icon={ faSuitcase } />
             </div>
             Mes emplois
           </a>
+          -->
+          <!-- This was put there for a settings page, we weren't sure what was
+               going to be in it, so we didn't create one yet.
           <a href="#" class="link">
             <div class="link-icon">
               <Icon icon={ faCog } />
             </div>
             Paramètres
           </a>
+          -->
           <a href="." class="link" on:click={ () => auth.signOut() }>
             <div class="link-icon">
               <Icon icon={ faSignOutAlt } />

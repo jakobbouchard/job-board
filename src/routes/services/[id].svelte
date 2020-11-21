@@ -5,11 +5,11 @@
 
     // the `id` parameter is available because
     // this file is called [id].svelte
-    const res = await this.fetch(`jobs/${ params.id }.json`);
+    const res = await this.fetch(`services/${params.id}.json`);
     const data = await res.json();
 
     if (res.status === 200) {
-      return { job: data };
+      return { service: data };
     } else {
       this.error(res.status, data.message);
     }
@@ -18,10 +18,10 @@
 
 <script>
   import Icon from 'fa-svelte';
-  import { faSuitcase, faLocationArrow, faCalendar, faBuilding, faPaperclip } from '@fortawesome/free-solid-svg-icons';
+  import { faSuitcase, faLocationArrow, faCalendar, faUser, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 
-  export let job;
-  const createdDate = new Date(job.data.createdAt.seconds * 1000)
+  export let service;
+  const createdDate = new Date(service.data.createdAt.seconds * 1000)
   const formattedDate = createdDate.toLocaleString('fr-CA', { year: 'numeric', month: 'long', day: 'numeric' })
 </script>
 
@@ -67,33 +67,33 @@
 </style>
 
 <svelte:head>
-  <title>{ job.data.name }</title>
+  <title>{ service.data.name }</title>
 </svelte:head>
 
 <div class="max-w-5xl mx-auto p-8">
   <div class="mb-6 pb-6 border-b border-gray-400 md:flex md:items-center md:justify-between">
     <div class="flex-1 min-w-0">
       <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
-        { job.data.name }
+        { service.data.name }
       </h2>
       <div class="info-container">
         <div class="info">
           <div class="icon">
-            <Icon icon={ faBuilding } />
+            <Icon icon={ faUser } />
           </div>
-          { job.data.company }
+          { service.data.company }
         </div>
         <div class="info">
           <div class="icon">
             <Icon icon={ faLocationArrow } />
           </div>
-          { job.data.location }
+          { service.data.location }
         </div>
         <div class="info">
           <div class="icon">
             <Icon icon={ faSuitcase } />
           </div>
-          { job.data.type }
+          { service.data.type }
         </div>
         <div class="info">
           <div class="icon">
@@ -116,6 +116,6 @@
   </div>
 
   <p>
-    { job.data.description }
+    { service.data.description }
   </p>
 </div>

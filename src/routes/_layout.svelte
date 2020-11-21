@@ -7,6 +7,7 @@
 
   export let segment;
 
+  // Based on https://medium.com/swlh/authentication-with-sapper-firebase-d3b060ad30e5
   const { session } = stores();
 
   onMount(async () => {
@@ -22,6 +23,7 @@
         Cookies.set('token', token);
         $session.user = token;
         console.log(`User found and session set!`);
+        console.log(user)
 
         // refreshes token every 55 minutes to also sync with server-side.
         window.timeoutId = setTimeout(() => {
@@ -48,9 +50,9 @@
 </style>
 
 {#if (segment !== 'signin' && segment !== 'signup')}
-  <Nav {segment}/>
+  <Nav { segment } />
 
-  <main class="relative max-w-5xl mx-auto p-8 bg-white">
+  <main class="relative">
     <slot></slot>
   </main>
 {:else}

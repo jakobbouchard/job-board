@@ -28,7 +28,7 @@ export function get(req, res, next) {
         });
 
         res.end(JSON.stringify({
-          message: `Emploi inexistant`
+          message: `Service inexistant`
         }));
       }
     })

@@ -1,18 +1,23 @@
 <script>
   import { goto } from '@sapper/app';
+  import { fade } from 'svelte/transition';
   import { auth, googleProvider, twitterProvider } from '../firebase';
   import Icon from 'fa-svelte'
   import { faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
-  async function login(button) {
+  let error = '';
+
+  async function login(loginMethod) {
     let provider;
-    switch (button) {
+    switch (loginMethod) {
       case 'google':
         provider = googleProvider;
         break;
       case 'twitter':
         provider = twitterProvider;
         break;
+      case 'email':
+        return;
     }
 
     try {
@@ -23,6 +28,25 @@
       let message = e.message || e;
       console.log("Something went wrong:", message);
     }
+  }
+
+  const loginWithEmail = async event => {
+    const { email, password } = event.target.elements;
+
+    auth.signInWithEmailAndPassword(email.value, password.value).then((res) => {
+      if (!error) {
+        goto('/profile');
+      }
+    }).catch(function(err) {
+      if (err.code == 'auth/invalid-email') {
+        error = 'Veuillez entrer une adresse courriel valide'
+      } else if (err.code == 'auth/user-not-found' || err.code == 'auth/wrong-password') {
+        error = 'Les identifiants que vous avez entrés sont invalides'
+      } else {
+        error = err.message || err;
+      }
+      console.log("Something went wrong:", err.message || err);
+    });
   }
 </script>
 
@@ -79,6 +103,24 @@
   <title>Connexion</title>
 </svelte:head>
 
+{#if error}
+<div transition:fade class="fixed w-full">
+  <div class="mx-auto mt-6 max-w-xl bg-red-100 border-t-4 border-red-500 rounded-b text-red-900 px-4 py-3 shadow-md" role="alert">
+    <div class="flex">
+      <div class="py-1">
+        <svg class="fill-current h-6 w-6 text-red-500 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+      </div>
+      <div>
+        <p class="font-bold">Erreur</p>
+        <p class="text-sm">{ error }</p>
+      </div>
+    </div>
+  </div>
+</div>
+{/if}
+
 <div class="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
   <div class="max-w-md w-full">
     <div>
@@ -92,43 +134,45 @@
       <div class="flex">
         <button on:click={() => login('google')} type="submit" class="group google-button">
           <span class="mr-2 icon-container">
-            <Icon class="text-white transition ease-in-out duration-150" icon={faGoogle} />
+            <Icon class="text-white transition ease-in-out duration-150" icon={ faGoogle } />
           </span>
           Continuer avec Google
         </button>
 
         <button on:click={() => login('twitter')} type="submit" class="group relative w-1/6 flex justify-center ml-3 md:ml-4 py-2 px-4 border border-transparent border-gray-400 text-sm leading-5 font-medium rounded-md bg-white hover:border-gray-600 focus:outline-none focus:border-gray-800 focus:shadow-outline-gray active:bg-gray-800 transition duration-150 ease-in-out">
           <span class="icon-container">
-            <Icon class="text-gray-600 group-hover:text-gray-800 transition ease-in-out duration-150" icon={faTwitter} />
+            <Icon class="text-gray-600 group-hover:text-gray-800 transition ease-in-out duration-150" icon={ faTwitter } />
           </span>
         </button>
       </div>
 
       <div class="separator text-gray-700 text-sm">Ou</div>
 
-      <form action="#" method="POST">
-        <input type="hidden" name="remember" value="true">
+      <form on:submit|preventDefault={ loginWithEmail } >
         <div class="rounded-md shadow-sm">
           <div>
-            <input aria-label="Adresse courriel" name="email" type="email" required class="rounded-t-md" placeholder="Adresse courriel">
+            <input aria-label="Adresse courriel" id="email" type="email" required class="rounded-t-md" placeholder="Adresse courriel">
           </div>
           <div class="-mt-px">
-            <input aria-label="Mot de passe" name="password" type="password" required class="rounded-b-md" placeholder="Mot de passe">
+            <input aria-label="Mot de passe" id="password" type="password" required class="rounded-b-md" placeholder="Mot de passe">
           </div>
         </div>
 
         <div class="mt-6 flex items-center justify-between">
           <div class="text-sm leading-5">
-            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-              Mot de passe oublié ?
-            </a>
-          </div>
-
-          <div class="text-sm leading-5">
             <a href="/signup" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
               Créer un compte
             </a>
           </div>
+
+          <!-- Didn't have time to create the feature/page, but it's extremely
+               easy to implement: https://firebase.google.com/docs/auth/web/manage-users#send_a_password_reset_email
+          <div class="text-sm leading-5">
+            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
+              Mot de passe oublié ?
+            </a>
+          </div>
+          -->
         </div>
 
         <div class="mt-6">

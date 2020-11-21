@@ -28,13 +28,15 @@
 </style>
 
 <svelte:head>
-  <title>{status}</title>
+  <title>{ status }</title>
 </svelte:head>
 
-<h1>{status}</h1>
+<div class="max-w-5xl mx-auto p-8">
+  <h1>{ status }</h1>
 
-<p>{error.message}</p>
+  <p>{ error.message }</p>
 
-{#if dev && error.stack}
-  <pre>{error.stack}</pre>
-{/if}
+  {#if dev && error.stack}
+    <pre>{ error.stack }</pre>
+  {/if}
+</div>
