@@ -22,6 +22,9 @@ For the backend, we will be using Firebase since it's pretty much an all-in-one
 solution for a backend. It will enable user authentication, storage of
 preferences, job postings as well as document storage (eg. Resumes).
 
+It would be interesting to try and implement Cypress for testing. Never used it,
+so not sure if it's the best idea for now, but we'll see.
+
 ## Tools/inspirations used
 
 - The [Sapper template](https://github.com/sveltejs/sapper-template), for a lot of the dynamic code for job offers.
