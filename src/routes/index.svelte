@@ -9,7 +9,7 @@
 <svelte:head>
   <title>Babillard d'emploi</title>
 </svelte:head>
-
+<!-- About us -->
 <div
   class="relative pt-16 pb-32 flex content-center items-center justify-center"
   style="min-height: 75vh;"
@@ -62,6 +62,7 @@
 
 <section class="pb-20 bg-gray-200 -mt-24">
   <div class="container mx-auto px-4">
+    <!-- Promotion cards -->
     <div class="flex flex-wrap">
       <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
         <div
@@ -82,7 +83,7 @@
             <p class="block relative text-right right-0 mt-0">
               <span class="inline-flex items-center justify-center">
                 <div class="mr-1">
-                  learn more
+                  En savoir plus
                 </div>
                 <!-- Hero icon: arrow-narrow-right -->
                 <svg class="inline w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -113,7 +114,7 @@
             <p class="block relative text-right right-0 mt-0">
               <span class="inline-flex items-center justify-center">
                 <div class="mr-1">
-                  learn more
+                  En savoir plus
                 </div>
                 <!-- Hero icon: arrow-narrow-right -->
                 <svg class="inline w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -144,7 +145,7 @@
             <p class="block relative text-right right-0 mt-0">
               <span class="inline-flex items-center justify-center">
                 <div class="mr-1">
-                  learn more
+                  En savoir plus
                 </div>
                 <!-- Hero icon: arrow-narrow-right -->
                 <svg class="inline w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -157,29 +158,32 @@
       </div>
       </div>
     </div>
+    <!-- Promoted Posts -->
     <div class="flex flex-wrap items-center mt-32">
       <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
         <h3 class="text-3xl mb-2 font-semibold leading-normal">
-          Working with us is a pleasure
+          Lorem ipsum dolor sit amet
         </h3>
         <p
           class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700"
         >
-          Don't let your uses guess by attaching tooltips and popoves to
-          any element. Just make sure you enable them first via
-          JavaScript.
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Necessitatibus, quis vitae corporis sapiente magnam enim? Culpa iste
+          in aut blanditiis, expedita quo velit quibusdam quasi voluptate.
+          Dolorem porro odit perferendis?
         </p>
         <p
           class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700"
         >
-          The kit comes with three pre-built pages to help you get started
-          faster. You can change the text and images and you're good to
-          go. Just make sure you enable them first via JavaScript.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est fuga sunt
+          voluptas delectus, facere distinctio mollitia perspiciatis. Obcaecati
+          error, tenetur maiores temporibus numquam magnam unde odit quasi eos
+          vero fugit.
         </p>
         <a
-          href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation"
+          href="/"
           class="font-bold text-gray-800 mt-8"
-          >Check Tailwind Starter Kit!</a
+          >Voir la page !</a
         >
       </div>
       <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
@@ -205,12 +209,13 @@
               ></polygon>
             </svg>
             <h4 class="text-xl font-bold text-white">
-              Top Notch Services
+              Lorem ipsum
             </h4>
             <p class="text-md font-light mt-2 text-white">
-              The Arctic Ocean freezes every winter and much of the
-              sea-ice then thaws every summer, and that process will
-              continue whatever happens.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam,
+              numquam non est unde alias vel doloribus, cupiditate dolor quis
+              praesentium enim eius nesciunt aspernatur deserunt nobis ipsum
+              voluptas aperiam iusto?
             </p>
           </blockquote>
         </div>

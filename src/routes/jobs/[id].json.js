@@ -5,9 +5,13 @@ export function get(req, res, next) {
   // this file is called [id].json.js
   const { id } = req.params;
 
+  // Gets the document from the "jobs" collection if Firestore, which has the id
+  // of the URL (e.g. /jobs/IZxeAfXU6avqyfwM7XaW )
   firestore.collection("jobs").doc(id)
     .get()
     .then(function(doc) {
+      // If the document exists, puts the data in a JSON format and outputs it
+      // using a status code of 200.
       if (doc.exists) {
         console.log("Document data:", doc.data());
         let id = doc.id;
@@ -20,6 +24,8 @@ export function get(req, res, next) {
         res.end(JSON.stringify({ id, data }));
 
       } else {
+        // Outputs a JSON with the message parameter for the _error.svelte page,
+        // using a 404 status code
         // doc.data() will be undefined in this case
         console.log("No such document!");
 

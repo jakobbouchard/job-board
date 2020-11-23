@@ -1,10 +1,18 @@
 <script>
+  /*
+    Some of the buttons are commented out because we haven't had time to
+    implement the functionality related to them. E.G. we don't have a settings
+    page or a "liked/saved" jobs page (or even a way to save them for that
+    matter).
+  */
+
   import { onMount } from 'svelte';
   import { scale } from 'svelte/transition';
   import { auth } from '../firebase';
   import Icon from 'fa-svelte';
   import { faUser, faSuitcase, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
+  // Parameters, passed from Firebase Auth
   export let displayName;
   export let photoURL;
   export let email;
@@ -100,6 +108,8 @@
       on:click={() => (show = !show)}
       class="profile-icon"
     >
+      <!-- If the user has no profile picture (which is the case when the user
+        has a email/password account), show the default SVG -->
       {#if photoURL}
       <img referrerpolicy="no-referrer" src={ photoURL } alt={ displayName }/>
       {:else}
@@ -119,6 +129,8 @@
         out:scale={{ duration: 75, start: 0.95 }}
         class="dropdown"
       >
+        <!-- If the user has no profile picture (which is the case when the user
+          has a email/password account), show the default SVG -->
         <div class="user-info">
           {#if photoURL}
           <img class="user-image" referrerpolicy="no-referrer" src={ photoURL } alt={ displayName }/>
@@ -131,6 +143,7 @@
             </g>
           </svg>
           {/if}
+          <!-- Show the display name if the user has one -->
           <div class="user-name" disabled>
             { displayName || 'Utilisateur' }
           </div>
@@ -138,6 +151,7 @@
             { email }
           </div>
         </div>
+
         <div class="dropdown-links">
           <a href="/profile" class="link">
             <div class="link-icon">
@@ -145,7 +159,7 @@
             </div>
             Profil
           </a>
-          <!-- This was put there so that students could "like" job offers and
+          <!-- This was put there so that students could "save" job offers and
                be able to get to them later on.
           <a href="#" class="link">
             <div class="link-icon">

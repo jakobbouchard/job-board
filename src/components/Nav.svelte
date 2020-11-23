@@ -4,12 +4,16 @@
   import { auth } from '../firebase';
   import { authState } from 'rxfire/auth';
 
+  // Current page
   export let segment;
 
+  // Gets the current user from Firebase using an observable from rxfire. Makes
+  // it super easy to get the authentication state in real time.
   let currentUser;
   const unsubscribe = authState(auth).subscribe(u => currentUser = u);
 
   // There's probably a more efficient way to do this, but uh... It works!
+  // This function opens and closes the mobile nav menu
   async function toggleMobileNav() {
     const menu = document.querySelector('#mobile-nav');
     const openBtn = document.querySelector('#open-nav-icon');
@@ -60,6 +64,7 @@
 
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         <!-- Profile dropdown -->
+        <!-- If the use is connected, show the dropdown, else show a login button -->
         {#if currentUser}
         <div class="ml-3 relative">
           <ProfileDropdown {...currentUser} />
@@ -73,6 +78,7 @@
         {/if}
 
         <!-- Post a job button, hidden in mobile layout -->
+        <!-- This is commented out because it's not ready/implemented -->
         <!--
         <div class="ml-3 relative">
           <a href="#" class="inline-flex justify-center py-2 px-4 text-sm leading-5 font-medium text-white transition duration-150 ease-in-out hidden sm:block">
@@ -93,6 +99,7 @@
       </div>
 
       <!-- Post a job button in mobile menu -->
+      <!-- This is commented out because it's not ready/implemented -->
       <!--
       <a href="#" class="block m-1 p-2 border border-transparent leading-5 rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
         Publier une offre

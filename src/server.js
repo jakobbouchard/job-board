@@ -14,7 +14,7 @@ export default polka() // You can also use Express
     compression({ threshold: 0 }),
     sirv('static', { dev }),
     sapper.middleware({
-      session: async (req, res) => { // populates user if it exists
+      session: async (req, res) => { // populates user cookie if it exists
         if (req.cookies.token) {
           return {
             user: req.cookies.token

@@ -1,4 +1,9 @@
 <script context="module">
+  /*
+    Eventually, we would've made it possible for clients to contact the service
+    easily using the "Contacter" button, but like 60% of this project, we didn't have
+    enough time.
+  */
 
   // Based on https://github.com/sveltejs/sapper-template
   export async function preload({ params }) {
@@ -8,6 +13,8 @@
     const res = await this.fetch(`services/${params.id}.json`);
     const data = await res.json();
 
+    // If the status code is 200 (document is found), get the service data, else
+    // error page and message
     if (res.status === 200) {
       return { service: data };
     } else {
@@ -18,8 +25,9 @@
 
 <script>
   import Icon from 'fa-svelte';
-  import { faSuitcase, faLocationArrow, faCalendar, faUser, faPaperclip } from '@fortawesome/free-solid-svg-icons';
+  import { faSuitcase, faLocationArrow, faCalendar, faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
+  // Gets the service data and creates some easier to read constants
   export let service;
   const createdDate = new Date(service.data.createdAt.seconds * 1000)
   const formattedDate = createdDate.toLocaleString('fr-CA', { year: 'numeric', month: 'long', day: 'numeric' })
@@ -71,6 +79,8 @@
 </svelte:head>
 
 <div class="max-w-5xl mx-auto p-8">
+
+  <!-- Header for the service offer -->
   <div class="mb-6 pb-6 border-b border-gray-400 md:flex md:items-center md:justify-between">
     <div class="flex-1 min-w-0">
       <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
@@ -107,9 +117,9 @@
       <span class="shadow-sm rounded-md">
         <button type="button" class="button">
           <div class="icon">
-            <Icon icon={ faPaperclip } />
+            <Icon icon={ faEnvelope } />
           </div>
-          Appliquer
+          Contacter
         </button>
       </span>
     </div>
