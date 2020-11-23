@@ -1,7 +1,10 @@
 <script>
+  // This is honestly the default Sapper error page.
+
   export let status;
   export let error;
 
+  // To see if we are running in a dev server
   const dev = process.env.NODE_ENV === 'development';
 </script>
 
@@ -36,6 +39,7 @@
 
   <p>{ error.message }</p>
 
+  <!-- Error stack shows, only in dev mode -->
   {#if dev && error.stack}
     <pre>{ error.stack }</pre>
   {/if}

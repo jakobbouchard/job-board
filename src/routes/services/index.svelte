@@ -6,9 +6,15 @@
   import { startWith } from 'rxjs/operators';
 
   // Based on https://fireship.io/lessons/svelte-v3-overview-firebase/
+
+  // These functions enable the page to get the service offers in real time:
+  // when a new service offer appears, it gets directly added to the page,
+  // without refresh.
   let query = firestore.collection('jobs').orderBy('createdAt');
   let services = collectionData(query, 'id').pipe(startWith([]));
 
+  // When the user hits the "Search" button, it changes the previous functions
+  // to the chosen parameters.
   function handleSearch(event) {
     query = firestore.collection('jobs').where('type', '==', event.detail.jobType).orderBy('createdAt');
     services = collectionData(query, 'id').pipe(startWith([]));
@@ -37,7 +43,8 @@
 </svelte:head>
 
 <div class="max-w-5xl mx-auto p-8">
-  <Search on:search={handleSearch} />
+  <!-- When the search event is dispatched, handles it (wow! right?) -->
+  <Search on:search={ handleSearch } />
 
   <div class="p-4 bg-white overflow-hidden sm:rounded-lg">
     <ul id="timeline" class="relative">

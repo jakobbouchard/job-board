@@ -3,6 +3,7 @@
   import { auth } from '../firebase';
   import { authState } from 'rxfire/auth';
 
+  // If the user doesn't exist, go to sign in page
   export async function preload(page, session) {
     let { user } = session;
     if (!user) {
@@ -12,6 +13,8 @@
 </script>
 <script>
   // Inspired by https://fireship.io/lessons/svelte-v3-overview-firebase/
+  // Gets the current user from Firebase using an observable from rxfire. Makes
+  // it super easy to get the authentication state in real time.
   let currentUser;
   const unsubscribe = authState(auth).subscribe(u => currentUser = u);
 </script>
@@ -22,6 +25,8 @@
 
 <div class="max-w-5xl mx-auto p-8">
   {#if currentUser}
+    <!-- The profile NEEDS to be in a separate file. If it's in the same file,
+         it creates an error code on load. Kinda weird. -->
     <Profile {...currentUser} />
   {/if}
 </div>

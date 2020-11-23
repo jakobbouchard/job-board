@@ -7,6 +7,7 @@
 
   let error = '';
 
+  // Since these are mostly Firebase methods, see https://firebase.google.com/docs
   async function login(loginMethod) {
     let provider;
     switch (loginMethod) {

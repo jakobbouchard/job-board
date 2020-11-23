@@ -2,6 +2,7 @@
   import Icon from 'fa-svelte';
   import { faSuitcase, faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 
+  // Parameters
   export let id;
   export let name;
   export let type;
@@ -71,7 +72,8 @@
       <div class="job-name">
         { name }
       </div>
-      <span class="job-type {type === "Temps plein" ? 'bg-green-100 text-green-800' : type === "Temps partiel" ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800'}">
+      <!-- If the type of job is "Temps plein", make the button green, if it's "temps partiel", yellow, else red -->
+      <span class="job-type { type === "Temps plein" ? 'bg-green-100 text-green-800' : type === "Temps partiel" ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800' }">
         { type }
       </span>
     </div>

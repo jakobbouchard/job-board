@@ -9,7 +9,7 @@
 <svelte:head>
   <title>Babillard d'emploi</title>
 </svelte:head>
-
+<!-- About us -->
 <div
   class="relative pt-16 pb-32 flex content-center items-center justify-center"
   style="min-height: 75vh;"
@@ -62,6 +62,7 @@
 
 <section class="pb-20 bg-gray-200 -mt-24">
   <div class="container mx-auto px-4">
+    <!-- Promotion cards -->
     <div class="flex flex-wrap">
       <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
         <div
@@ -157,6 +158,7 @@
       </div>
       </div>
     </div>
+    <!-- Promoted Posts -->
     <div class="flex flex-wrap items-center mt-32">
       <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
         <h3 class="text-3xl mb-2 font-semibold leading-normal">

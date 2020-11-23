@@ -1,3 +1,4 @@
+// Inspired by https://fireship.io/lessons/svelte-v3-overview-firebase/
 import firebase from "firebase/app";
 import 'firebase/auth';
 import "firebase/firestore";

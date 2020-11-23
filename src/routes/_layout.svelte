@@ -5,7 +5,15 @@
   import { auth } from '../firebase';
   import Cookies from 'js-cookie';
 
+  // Current page
   export let segment;
+
+  /*
+    This whole big code block puts the user token in a cookie so that Sapper can
+    find it during the preload functions of other pages to prevent them from
+    being accessed if the user isn't authenticated. It also refreshes it
+    every 55 minutes to prevent it from being out of date.
+  */
 
   // Based on https://medium.com/swlh/authentication-with-sapper-firebase-d3b060ad30e5
   const { session } = stores();
@@ -49,6 +57,7 @@
   @tailwind utilities;
 </style>
 
+<!-- If the page is signin or signup, don't show the Navbar -->
 {#if (segment !== 'signin' && segment !== 'signup')}
   <Nav { segment } />
 
