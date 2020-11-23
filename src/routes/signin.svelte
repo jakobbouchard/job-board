@@ -28,7 +28,7 @@
         }
       }).catch(function(err) {
         if (err.code == 'auth/account-exists-with-different-credential') {
-          error = 'Un compte existe déjà avec la même adresse courriel mais des informations de connexion différentes. Connectez-vous à l\'aide d\'un fournisseur (par exemple : Google) associé à cette adresse courriel.';
+          error = 'Un compte existe déjà avec la même adresse courriel mais des informations de connexion différentes. Rafraîchissez la page, puis connectez-vous à l\'aide d\'un fournisseur (par exemple : Google) associé à cette adresse courriel.';
         } else {
           error = err.message || err;
         }

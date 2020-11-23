@@ -43,7 +43,7 @@ It would be interesting to try and implement [Cypress](https://cypress.io) for t
 ## Known bugs
 
 - The timeline's line continues down, it's supposed to stop "inside" the last offer.
-- ~~When logged in using Twitter, the mail shows as null.~~ Fixed, enabled email address collection in the Twitter Developer Portal. However, it requires a privacy policy and terms of service, which we don't have yet. It also prevents people from signing up if they already have an account with that email. Will fix if there's time.
+- ~~When logged in using Twitter, the mail shows as null.~~ Fixed, enabled email address collection in the Twitter Developer Portal. However, it requires a privacy policy and terms of service, which we don't have yet. It also prevents people from signing up if they already have an account with that email. For now it shows an error message, but users need to refresh the page to relogin.
 - When logging out, the profile image stays there a fraction of a second.
 
 ## Missing features
