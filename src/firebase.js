@@ -3,6 +3,7 @@ import firebase from "firebase/app";
 import 'firebase/auth';
 import "firebase/firestore";
 
+// Our Firebase settings
 const firebaseConfig = {
   apiKey: "AIzaSyDvdLLNv65dI7XQtEtlpO_XTIerVtJIXBw",
   authDomain: "job-board-cegep-outaouais.firebaseapp.com",
@@ -24,7 +25,7 @@ function initFirebase(config) {
 
 const app = initFirebase(firebaseConfig);
 
-// returning firestore handle
+// Returning Firebase Auth and Firestore handlers
 export const auth = app.auth();
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 export const twitterProvider = new firebase.auth.TwitterAuthProvider();

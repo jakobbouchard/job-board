@@ -1,4 +1,5 @@
 <script>
+  // Crée un événement personnalisé pour la recherche
   import { createEventDispatcher } from 'svelte';
 
   const dispatch = createEventDispatcher();
@@ -37,7 +38,7 @@
     </select>
   </div>
 
-  <!-- Search button -->
+  <!-- Search button, on click, dispatches search event -->
   <div class="col-span-6 sm:col-span-1">
     <button on:click={ search } class="inline-flex justify-center mt-1 py-2 px-4 w-full border border-transparent text-base leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
       Rechercher

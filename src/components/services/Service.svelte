@@ -1,4 +1,5 @@
 <script>
+  // Importe la composante d'icônes de fa-svelte, ainsi que les icônes SVG nécessaires
   import Icon from 'fa-svelte';
   import { faUser, faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 
