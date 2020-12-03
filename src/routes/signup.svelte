@@ -19,28 +19,26 @@
         break;
     }
 
-    try {
-      auth.signInWithPopup(provider).then((res) => {
-        if (!error) {
-          goto('/profile');
-        }
-      }).catch(function(err) {
-        if (err.code == 'auth/account-exists-with-different-credential') {
-          error = 'Un compte existe déjà avec la même adresse courriel mais des informations de connexion différentes. Rafraîchissez la page, puis connectez-vous à l\'aide d\'un fournisseur (par exemple : Google) associé à cette adresse courriel.';
-        } else {
-          error = err.message || err;
-        }
-        console.log('Something went wrong:', err.message || err);
-      });
-    } catch(e) {
-      let message = e.message || e;
-      console.log('Something went wrong:', message);
-    }
+    // Try to authenticate with a popup window, if it fails, show error in alert
+    auth.signInWithPopup(provider).then((res) => {
+      if (!error) {
+        goto('/profile');
+      }
+    }).catch(function(err) {
+      if (err.code == 'auth/account-exists-with-different-credential') {
+        error = 'Un compte existe déjà avec la même adresse courriel mais des informations de connexion différentes. Rafraîchissez la page, puis connectez-vous à l\'aide d\'un fournisseur (par exemple : Google) associé à cette adresse courriel.';
+      } else {
+        error = err.message || err;
+      }
+      console.log('Something went wrong:', err.message || err);
+    });
   }
 
   const createWithEmail = async event => {
+    // Gets form elements
     const { email, password } = event.target.elements;
 
+    // Try to create a user, if it fails, show error in alert
     auth.createUserWithEmailAndPassword(email.value, password.value).then((res) => {
       if (!error) {
         goto('/profile');
@@ -113,6 +111,7 @@
   <title>Inscription</title>
 </svelte:head>
 
+<!-- Error alert -->
 {#if error}
 <div transition:fade class="fixed w-full">
   <div class="mx-auto mt-6 max-w-xl bg-red-100 border-t-4 border-red-500 rounded-b text-red-900 px-4 py-3 shadow-md" role="alert">
@@ -140,6 +139,7 @@
       </h2>
     </div>
 
+    <!-- Social icons -->
     <div class="mt-8 bg-white p-6 md:p-8 shadow rounded-lg">
       <div class="flex">
         <button on:click={() => login('google')} type="submit" class="group google-button">
@@ -158,6 +158,7 @@
 
       <div class="separator text-gray-700 text-sm">Ou</div>
 
+      <!-- Email/Password form -->
       <form on:submit|preventDefault={ createWithEmail } >
         <div class="rounded-md shadow-sm">
           <div>

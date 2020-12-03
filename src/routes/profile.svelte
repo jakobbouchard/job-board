@@ -1,3 +1,4 @@
+<!-- Using context="module" enables us to use the preload function -->
 <script context="module">
   import Profile from '../components/Profile.svelte';
   import { auth } from '../firebase';
@@ -11,6 +12,8 @@
     }
   }
 </script>
+
+<!-- However regular code needs to be in a regular script tag, causes errors if it isn't -->
 <script>
   // Inspired by https://fireship.io/lessons/svelte-v3-overview-firebase/
   // Gets the current user from Firebase using an observable from rxfire. Makes

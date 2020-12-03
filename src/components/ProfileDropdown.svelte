@@ -21,6 +21,7 @@
   let show = false; // menu state
   let menu = null; // menu wrapper DOM reference
 
+  // When the component is created
   onMount(() => {
     const handleOutsideClick = (event) => {
       if (show && !menu.contains(event.target)) {
