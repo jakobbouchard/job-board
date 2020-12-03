@@ -17,27 +17,21 @@
       case 'twitter':
         provider = twitterProvider;
         break;
-      case 'email':
-        return;
     }
 
-    try {
-      auth.signInWithPopup(provider).then((res) => {
-        if (!error) {
-          goto('/profile');
-        }
-      }).catch(function(err) {
-        if (err.code == 'auth/account-exists-with-different-credential') {
-          error = 'Un compte existe déjà avec la même adresse courriel mais des informations de connexion différentes. Rafraîchissez la page, puis connectez-vous à l\'aide d\'un fournisseur (par exemple : Google) associé à cette adresse courriel.';
-        } else {
-          error = err.message || err;
-        }
-        console.log('Something went wrong:', err.message || err);
-      });
-    } catch(e) {
-      let message = e.message || e;
-      console.log('Something went wrong:', message);
-    }
+    // Try to authenticate with a popup window, if it fails, show error in alert
+    auth.signInWithPopup(provider).then((res) => {
+      if (!error) {
+        goto('/profile');
+      }
+    }).catch(function(err) {
+      if (err.code == 'auth/account-exists-with-different-credential') {
+        error = 'Un compte existe déjà avec la même adresse courriel mais des informations de connexion différentes. Rafraîchissez la page, puis connectez-vous à l\'aide d\'un fournisseur (par exemple : Google) associé à cette adresse courriel.';
+      } else {
+        error = err.message || err;
+      }
+      console.log('Something went wrong:', err.message || err);
+    });
   }
 
   const loginWithEmail = async event => {
